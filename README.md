@@ -10,7 +10,7 @@ This is an evaluated hackathon prototype, not a production service.
 |---|---|
 | Labeled evaluation | **24/28 cases pass (85.7%)** with the real embedding model |
 | Irrelevance guardrail | 5/5 novel-but-irrelevant cases scored **0.000** despite mean raw novelty **0.816** |
-| Automated tests | 103 tests across 16 files, including the golden dataset run through the real model; type-check clean |
+| Automated tests | 106 tests across 16 files, including the golden dataset run through the real model; type-check clean |
 | Runtime dependencies on hosted AI | None: local embeddings, no API keys |
 
 ## 1. Problem
@@ -126,7 +126,7 @@ Requires Node.js ≥ 24. The first model-backed run downloads `Xenova/all-MiniLM
 
 ```bash
 npm install
-npm test              # 103 tests, 16 files (includes a real-model golden-dataset test)
+npm test              # 106 tests, 16 files (includes a real-model golden-dataset test)
 npm run typecheck
 npm run evaluate      # real-model evaluation → evaluation/results.{json,md}
 npm run dev           # demo UI at http://localhost:3000 (PORT to override)
@@ -142,7 +142,7 @@ npm run score -- --file candidate.json
 npm run score -- --json '{"id":"c-1","headline":"Flag conflicting owners","body":"Warn agents before duplicate follow-up tasks are created.","perspective":"suggestion"}'
 ```
 
-Run from the repository root. On Windows PowerShell 5.1, use `--file` or `--case`, because PowerShell removes the quotes inside `--json`. Every CLI and UI run is appended to [logs/score-runs.csv](logs/score-runs.csv) with all components, the Top-3 neighbors, and a baseline fingerprint. The committed log holds my manual UI checks (`source = ui`) and a CLI run of all 28 golden-dataset cases (`source = cli`).
+Run from the repository root. On Windows PowerShell 5.1, use `--file` or `--case`, because PowerShell removes the quotes inside `--json`. Every CLI and UI run is appended to [logs/score-runs.csv](logs/score-runs.csv) with all score components (rounded to 4 decimals), the Top-3 neighbors, and a baseline fingerprint. `--case` runs also record the case ID, category, `PASS`/`FAIL`, the expected bounds, and any failed checks, all decided at full precision. The committed log holds a CLI run of all 28 golden-dataset cases (`source = cli`, 24 PASS / 4 FAIL, matching [results.md](evaluation/results.md)) and my manual UI checks (`source = ui`, no expectations).
 
 ## 8. Limitations
 

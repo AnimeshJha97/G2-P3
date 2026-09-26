@@ -13,8 +13,10 @@ import {
   fixedContentSchema,
   type FixedContent,
 } from "../types/fixed-content.js";
+import { evaluateScoredCase } from "../evaluation/evaluator.js";
 import {
   labeledEvaluationCasesSchema,
+  type LabeledEvaluationCase,
 } from "../types/evaluation.js";
 import type { NoveltyScoreResult } from "../types/score.js";
 import { submissionSchema, type Submission } from "../types/submission.js";
@@ -133,13 +135,21 @@ export const loadProjectData = async (): Promise<{
   };
 };
 
-const loadCandidate = async (source: CandidateSource): Promise<Submission> => {
+interface LoadedCandidate {
+  candidate: Submission;
+  // Set only for --case, so the run can be checked against its expectations.
+  evaluationCase?: LabeledEvaluationCase;
+}
+
+const loadCandidate = async (source: CandidateSource): Promise<LoadedCandidate> => {
   if (source.kind === "json") {
-    return parseWithContext(
-      submissionSchema,
-      parseJson(source.value, "Candidate"),
-      "Candidate",
-    );
+    return {
+      candidate: parseWithContext(
+        submissionSchema,
+        parseJson(source.value, "Candidate"),
+        "Candidate",
+      ),
+    };
   }
 
   if (source.kind === "file") {
@@ -147,7 +157,9 @@ const loadCandidate = async (source: CandidateSource): Promise<Submission> => {
       resolve(source.value),
       "candidate file",
     );
-    return parseWithContext(submissionSchema, candidateJson, "Candidate");
+    return {
+      candidate: parseWithContext(submissionSchema, candidateJson, "Candidate"),
+    };
   }
 
   const casesJson = await readJsonFile(
@@ -165,7 +177,7 @@ const loadCandidate = async (source: CandidateSource): Promise<Submission> => {
     throw new Error(`Evaluation case not found: ${source.value}`);
   }
 
-  return selectedCase.candidate;
+  return { candidate: selectedCase.candidate, evaluationCase: selectedCase };
 };
 
 const formatNumber = (value: number): string => value.toFixed(6);
@@ -206,7 +218,7 @@ export const runScoreCli = async (args: readonly string[]): Promise<void> => {
   }
 
   const source = parseScoreArguments(args);
-  const [candidate, projectData] = await Promise.all([
+  const [{ candidate, evaluationCase }, projectData] = await Promise.all([
     loadCandidate(source),
     loadProjectData(),
   ]);
@@ -228,12 +240,31 @@ export const runScoreCli = async (args: readonly string[]): Promise<void> => {
 
   console.log(formatScoreResult(candidate, result, projectData.baselines, projectData.fixedContent));
 
+  const evaluated = evaluationCase && evaluateScoredCase(evaluationCase, result);
+  if (evaluated) {
+    const failed = evaluated.checks.filter(({ passed }) => !passed);
+    console.log(
+      `\nEvaluation (${evaluated.category}): ${evaluated.passed ? "PASS" : "FAIL"}` +
+        failed
+          .map(({ metric, operator, expected, actual }) =>
+            `\n  ${metric} ${formatNumber(actual)} ${operator === "min" ? "<" : ">"} ${operator} ${expected}`,
+          )
+          .join(""),
+    );
+  }
+
   try {
     await appendScoreLog({
       source: "cli",
       candidate,
       result,
       baselines: projectData.baselines,
+      evaluation: evaluated && {
+        caseId: evaluated.id,
+        category: evaluated.category,
+        passed: evaluated.passed,
+        checks: evaluated.checks,
+      },
     });
     console.log(`\nRun logged to ${relative(process.cwd(), DEFAULT_SCORE_LOG_PATH)}`);
   } catch (error) {

@@ -1,4 +1,4 @@
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -122,12 +122,55 @@ describe("score log", () => {
         perspective: "question",
       },
     });
-    expect(row.slice(2, 5)).toEqual([
+    const candidateColumn = SCORE_LOG_HEADER.indexOf("candidateId");
+    expect(row.slice(candidateColumn, candidateColumn + 3)).toEqual([
       "'@id",
       `'=HYPERLINK("http://example.test")`,
       "'+cmd|' /C calc'!A0",
     ]);
-    expect(toScoreLogRow(entry)[3]).toBe("Head, line");
+    expect(toScoreLogRow(entry)[candidateColumn + 1]).toBe("Head, line");
+  });
+
+  const column = (row: readonly unknown[], name: string): unknown =>
+    row[SCORE_LOG_HEADER.indexOf(name)];
+
+  it("rounds scores to four decimals", () => {
+    const row = toScoreLogRow({
+      ...entry,
+      result: {
+        ...result,
+        finalScore: 0.123456789,
+        nearestNeighbors: [{ ...result.nearestNeighbors[0], semanticSimilarity: 0.98765 }],
+      } as NoveltyScoreResult,
+    });
+    expect(column(row, "finalScore")).toBe(0.1235);
+    expect(column(row, "neighbor1Semantic")).toBe(0.9877);
+  });
+
+  it("records the case, category, and PASS/FAIL for labeled cases", () => {
+    const checks = [
+      { expectation: "minFinalScore", metric: "finalScore", operator: "min", expected: 0.15, actual: 0.3, passed: true },
+      { expectation: "minRelevance", metric: "relevance", operator: "min", expected: 0.35, actual: 0.26104, passed: false },
+    ] as const;
+    const row = toScoreLogRow({
+      ...entry,
+      evaluation: { caseId: "eval-1", category: "novel_relevant", passed: false, checks },
+    });
+
+    expect(column(row, "evaluationCaseId")).toBe("eval-1");
+    expect(column(row, "category")).toBe("novel_relevant");
+    expect(column(row, "result")).toBe("FAIL");
+    expect(column(row, "expectedBounds")).toBe("finalScore >= 0.150; relevance >= 0.350");
+    expect(column(row, "failedChecks")).toBe("relevance 0.2610 (expected >= 0.350)");
+    expect(column(toScoreLogRow(entry), "result")).toBeUndefined();
+  });
+
+  it("refuses to append under an older header", async () => {
+    directory = await mkdtemp(join(tmpdir(), "score-log-"));
+    const filePath = join(directory, "runs.csv");
+    await writeFile(filePath, "timestamp,source,candidateId\n", "utf8");
+
+    await expect(appendScoreLog(entry, filePath)).rejects.toThrow("older column layout");
   });
 
   it("fingerprints change when the baseline set changes", () => {
