@@ -3,7 +3,7 @@
 ## G2 AI Hiring Hackathon — Problem 3
 ### Rewarding Novelty in Submissions
 
-**Submission context:** I prepared this architecture before implementation and used it to guide the build. I have retained the original design language as a record of my decisions; [README.md](../README.md) and [evaluation/results.md](../evaluation/results.md) describe the final implemented and evaluated state.
+**Submission context:** I prepared this architecture before implementation and used it to guide the build. I have retained the original design language as a record of my decisions; [README.md](../README.md) and [evaluation/results.md](../evaluation/results.md) describe the final implemented and evaluated state. Post-evaluation additions (the local demo UI, input word limits, and the fixed content as a comparison neighbor) are summarized there and in [SCORING_DESIGN.md §58](SCORING_DESIGN.md).
 
 **Purpose:** Record the implementation architecture I chose so I could build the project quickly in small, testable modules.
 

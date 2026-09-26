@@ -3,7 +3,7 @@
 ## G2 AI Hiring Hackathon — Problem 3
 ### Rewarding Novelty in Submissions
 
-**Submission context:** I designed this scoring approach before implementation, then calibrated only the relevance thresholds using the recorded evaluation process. I retained the full design rationale here; the locked configuration and measured limitations are reported in [evaluation/results.md](../evaluation/results.md).
+**Submission context:** I designed this scoring approach before implementation, then calibrated only the relevance thresholds using the recorded evaluation process. Post-evaluation edge-case fixes (input word limits, the fixed content as a comparison neighbor, English-only scope) are recorded in section 58 and do not change the locked parameters. I retained the full design rationale here; the locked configuration and measured limitations are reported in [evaluation/results.md](../evaluation/results.md).
 
 **Purpose:** Record my novelty-scoring algorithm in implementation-ready detail so I did not invent the scoring logic during the build.
 
@@ -2357,3 +2357,36 @@ whether 85/15 remains the best simple weighting
 minimum/maximum text length
 optional human-readable labels
 ```
+
+---
+
+# 58. Post-Evaluation Amendments
+
+After the locked evaluation, I stress-tested the implementation with two additional synthetic datasets (city transit and grocery refills, 50 baselines each; not included in this repository) and adversarial inputs. The testing did not show a need to change the thresholds, but it exposed three gaps that I resolved as follows. None changes the locked parameters in section 56.
+
+## 58.1 Minimum and maximum text length
+
+This resolves the deferred "minimum/maximum text length" decision in section 57.
+
+```text
+headline: at least 1 word containing a letter or digit
+body:     at least 5 words containing a letter or digit
+headline + body: at most 100 words
+```
+
+Without a minimum, content-free input was rewarded as novel because it resembles no baseline: `ok` scored `0.315` and emoji alone `0.234`. Without a maximum, text beyond the model's input window was truncated, so a duplicate appended after 700 words of filler went undetected. The 100-word maximum mirrors the problem statement's limit for the fixed content. Every baseline and labeled case already satisfies these rules (7 to 28 words).
+
+## 58.2 Fixed content as a comparison neighbor
+
+```text
+semantic neighbors = baseline submissions + fixed content
+lexical comparisons = baseline submissions + fixed content (title + body)
+```
+
+Without this, restating the announcement scored as well as a new idea (`0.494`), because it is maximally relevant and unlike any baseline. The fixed content's semantic similarity is the same cosine already computed for relevance, so no extra embedding is needed. Its lexical text omits the `Title:`/`Body:` labels so they do not inflate overlap.
+
+Measured effect: a verbatim copy fell to `0.149`, the body alone to `0.174`, and a close paraphrase to `0.336`. None of the 28 labeled cases changed, and 3 of 57 probes across the three stress-test datasets moved by at most `0.002`, because the fixed content is embedded without submission field labels and therefore sits below typical submission-to-submission similarity.
+
+## 58.3 English-only model
+
+`Xenova/all-MiniLM-L6-v2` is trained on English. A Spanish translation of an existing submission scored `0.467` (treated as novel) and a Hindi translation was gated to `0.049` (treated as irrelevant). The system is therefore documented as English-only; multilingual support needs a multilingual embedding model and recalibrated relevance thresholds.
