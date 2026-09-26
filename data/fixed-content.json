@@ -1,0 +1,5 @@
+{
+  "id": "announcement-001",
+  "title": "Assist AI for customer-support teams",
+  "body": "Acme Support is launching Assist AI for customer-support teams. It summarizes customer conversations, extracts action items, detects recurring issues, and works with Slack and existing help-desk workflows. The feature supports multiple languages and provides analytics for agents and administrators. Admins can configure access, human review, data processing, security, and retention settings before rollout."
+}

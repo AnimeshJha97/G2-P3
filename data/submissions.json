@@ -1,0 +1,302 @@
+[
+  {
+    "id": "submission-001",
+    "headline": "Faster case handoffs",
+    "body": "Automatic conversation summaries should save agents time when a case moves between shifts or teams.",
+    "perspective": "support"
+  },
+  {
+    "id": "submission-002",
+    "headline": "Measure the time saved",
+    "body": "Will the analytics show how much handling time agents save by using generated summaries?",
+    "perspective": "question"
+  },
+  {
+    "id": "submission-003",
+    "headline": "Quicker wrap-up work",
+    "body": "Generating summaries and action items could reduce the manual notes agents write after every conversation.",
+    "perspective": "observation"
+  },
+  {
+    "id": "submission-004",
+    "headline": "Keep summaries concise",
+    "body": "Let teams choose a short summary format so agents spend less time reading before responding.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-005",
+    "headline": "Sensitive conversations need privacy safeguards",
+    "body": "Customer chats may contain personal information, so the AI processing boundaries must be clear.",
+    "perspective": "concern"
+  },
+  {
+    "id": "submission-006",
+    "headline": "Make privacy settings visible",
+    "body": "Show agents when a conversation is being processed and which customer data the assistant can use.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-007",
+    "headline": "Regional processing choices",
+    "body": "Can administrators select where customer conversations are processed to meet local privacy requirements?",
+    "perspective": "question"
+  },
+  {
+    "id": "submission-008",
+    "headline": "Privacy controls build confidence",
+    "body": "Configurable data processing makes the assistant more practical for support teams handling sensitive accounts.",
+    "perspective": "support"
+  },
+  {
+    "id": "submission-009",
+    "headline": "Configurable deletion windows",
+    "body": "Administrators should be able to choose how long generated summaries and extracted action items are retained.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-010",
+    "headline": "Retention policy details",
+    "body": "Does deleting a source conversation also remove its AI summary, action items, and analytics data?",
+    "perspective": "question"
+  },
+  {
+    "id": "submission-011",
+    "headline": "Avoid indefinite storage",
+    "body": "Generated support records could outlive the original conversation unless retention limits apply consistently.",
+    "perspective": "concern"
+  },
+  {
+    "id": "submission-012",
+    "headline": "Different teams need different retention",
+    "body": "Enterprise and consumer support queues may require separate deletion periods for their AI-generated records.",
+    "perspective": "observation"
+  },
+  {
+    "id": "submission-013",
+    "headline": "Summary accuracy is essential",
+    "body": "An incorrect account detail in a generated conversation summary could mislead the next support agent.",
+    "perspective": "concern"
+  },
+  {
+    "id": "submission-014",
+    "headline": "Show links to source messages",
+    "body": "Each summary claim should link back to the customer message that supports it so agents can verify accuracy.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-015",
+    "headline": "How is accuracy monitored?",
+    "body": "Will administrators see error rates for summaries, action items, and recurring-issue detection?",
+    "perspective": "question"
+  },
+  {
+    "id": "submission-016",
+    "headline": "Action-item quality matters too",
+    "body": "A correct summary is not enough if the assistant assigns the wrong owner or due date to a follow-up.",
+    "perspective": "observation"
+  },
+  {
+    "id": "submission-017",
+    "headline": "Agents should approve important outputs",
+    "body": "Require human review before an AI-generated action item changes a customer record or triggers a workflow.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-018",
+    "headline": "Keep people in control",
+    "body": "I support summaries as drafts, provided agents can edit them before other teams rely on the content.",
+    "perspective": "support"
+  },
+  {
+    "id": "submission-019",
+    "headline": "Automation should not hide judgment",
+    "body": "Agents may trust polished AI summaries without checking whether important nuance was omitted.",
+    "perspective": "concern"
+  },
+  {
+    "id": "submission-020",
+    "headline": "Track human corrections",
+    "body": "The product should record when agents revise generated summaries so administrators can audit human oversight.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-021",
+    "headline": "Slack delivery could speed collaboration",
+    "body": "Posting approved conversation summaries to the right Slack channel would help specialists respond sooner.",
+    "perspective": "support"
+  },
+  {
+    "id": "submission-022",
+    "headline": "Control Slack destinations",
+    "body": "Administrators need rules that prevent sensitive support summaries from appearing in public Slack channels.",
+    "perspective": "concern"
+  },
+  {
+    "id": "submission-023",
+    "headline": "Connect action items to tickets",
+    "body": "Create help-desk tasks from extracted action items while preserving a link to the original conversation.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-024",
+    "headline": "Which help desks are supported?",
+    "body": "Will the initial release integrate with existing ticket queues as well as Slack workflows?",
+    "perspective": "question"
+  },
+  {
+    "id": "submission-025",
+    "headline": "Multilingual summaries can unify teams",
+    "body": "Support agents could review consistent summaries even when customers contact the company in different languages.",
+    "perspective": "support"
+  },
+  {
+    "id": "submission-026",
+    "headline": "Test language-specific accuracy",
+    "body": "Publish summary quality results by language instead of reporting one combined accuracy number.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-027",
+    "headline": "Meaning can disappear in translation",
+    "body": "Regional phrases and mixed-language conversations may produce misleading summaries or action items.",
+    "perspective": "concern"
+  },
+  {
+    "id": "submission-028",
+    "headline": "Language fallback behavior",
+    "body": "What happens when the assistant encounters a language or dialect it does not reliably support?",
+    "perspective": "question"
+  },
+  {
+    "id": "submission-029",
+    "headline": "Tell customers when AI is used",
+    "body": "A clear notice that conversations may be summarized by AI would help preserve customer trust.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-030",
+    "headline": "Transparency supports trust",
+    "body": "Customers are more likely to accept automated summaries when the company explains their purpose and controls.",
+    "perspective": "support"
+  },
+  {
+    "id": "submission-031",
+    "headline": "Offer an opt-out path",
+    "body": "Can customers decline AI processing and still receive the same level of support?",
+    "perspective": "question"
+  },
+  {
+    "id": "submission-032",
+    "headline": "Errors could damage confidence",
+    "body": "Repeatedly misrepresenting a customer's issue in summaries may reduce trust in the entire support experience.",
+    "perspective": "concern"
+  },
+  {
+    "id": "submission-033",
+    "headline": "Role-based feature access",
+    "body": "Administrators should control which support roles can view summaries, analytics, and extracted action items.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-034",
+    "headline": "Pilot controls are welcome",
+    "body": "Admin configuration should let organizations enable the assistant for a small support team before wider rollout.",
+    "perspective": "support"
+  },
+  {
+    "id": "submission-035",
+    "headline": "Configuration could become fragmented",
+    "body": "Too many team-level settings may make it difficult for administrators to enforce a consistent AI policy.",
+    "perspective": "concern"
+  },
+  {
+    "id": "submission-036",
+    "headline": "Copy settings between teams",
+    "body": "Allow administrators to reuse approved processing, review, access, and retention configurations across support queues.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-037",
+    "headline": "Recurring issues can guide product work",
+    "body": "Aggregated support trends could help product teams prioritize problems that customers report most often.",
+    "perspective": "support"
+  },
+  {
+    "id": "submission-038",
+    "headline": "Explain detected trends",
+    "body": "Analytics should show which conversations contributed to a recurring issue and why they were grouped together.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-039",
+    "headline": "Small samples may distort analytics",
+    "body": "A few unusual conversations could look like a recurring customer issue when ticket volume is low.",
+    "perspective": "concern"
+  },
+  {
+    "id": "submission-040",
+    "headline": "Trend reporting intervals",
+    "body": "Can administrators compare recurring support issues across daily, weekly, and monthly analytics views?",
+    "perspective": "question"
+  },
+  {
+    "id": "submission-041",
+    "headline": "Encrypt generated support data",
+    "body": "Conversation summaries and action items need encryption both in transit and while stored.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-042",
+    "headline": "Integration permissions need limits",
+    "body": "A compromised Slack connection should not expose every customer summary or administrator setting.",
+    "perspective": "concern"
+  },
+  {
+    "id": "submission-043",
+    "headline": "Audit access to summaries",
+    "body": "Security logs should record who viewed, edited, exported, or shared each generated support record.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-044",
+    "headline": "Enterprise security readiness",
+    "body": "What security reviews and access protections will be available before administrators enable the assistant?",
+    "perspective": "question"
+  },
+  {
+    "id": "submission-045",
+    "headline": "Automatic follow-ups reduce busywork",
+    "body": "Extracting action items can help agents move from a resolved conversation to the next customer more quickly.",
+    "perspective": "support"
+  },
+  {
+    "id": "submission-046",
+    "headline": "Route action items by expertise",
+    "body": "Use help-desk ownership rules to send each extracted task to the team best equipped to complete it.",
+    "perspective": "suggestion"
+  },
+  {
+    "id": "submission-047",
+    "headline": "Automation may create duplicate tasks",
+    "body": "The assistant should detect an existing help-desk task before creating another action item for the same request.",
+    "perspective": "concern"
+  },
+  {
+    "id": "submission-048",
+    "headline": "Confirm completed follow-ups",
+    "body": "Could the workflow alert an agent when an extracted action item is overdue or completed?",
+    "perspective": "question"
+  },
+  {
+    "id": "submission-049",
+    "headline": "Peak-hour productivity gains",
+    "body": "Summaries may be most valuable during busy periods when support agents have little time to review long histories.",
+    "perspective": "observation"
+  },
+  {
+    "id": "submission-050",
+    "headline": "Corrections reveal model weaknesses",
+    "body": "Patterns in agent edits could identify where summary accuracy needs improvement across products or languages.",
+    "perspective": "observation"
+  }
+]
