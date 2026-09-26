@@ -8,7 +8,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "evaluate": "tsx src/evaluation/run.ts"
+    "evaluate": "tsx src/evaluation/run.ts",
+    "prescore": "tsc --project tsconfig.score.json",
+    "score": "node .tmp/score-cli/cli/score.js"
   },
   "engines": {
     "node": ">=24"
