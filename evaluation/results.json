@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-26T06:50:13.287Z",
-  "durationMs": 457.47079999999994,
+  "generatedAt": "2026-09-26T09:27:48.661Z",
+  "durationMs": 464.82180000000005,
   "embeddingModel": "Xenova/all-MiniLM-L6-v2",
   "config": {
     "topK": 3,

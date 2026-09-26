@@ -1,12 +1,12 @@
 import { z } from "zod";
 
+import { countWords } from "../text/word-count.js";
+
 export interface FixedContent {
   id: string;
   title?: string;
   body: string;
 }
-
-const countWords = (text: string): number => text.trim().split(/\s+/u).length;
 
 export const fixedContentSchema: z.ZodType<FixedContent> = z
   .object({

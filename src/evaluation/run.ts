@@ -112,7 +112,7 @@ export const runEvaluation = async (): Promise<EvaluationReport> => {
     writeFile(outputUrl, `${JSON.stringify(report, null, 2)}\n`, "utf8"),
     writeFile(
       projectFile("evaluation/results.md"),
-      renderEvaluationMarkdown(report, baselines),
+      renderEvaluationMarkdown(report, baselines, fixedContent),
       "utf8",
     ),
   ]);

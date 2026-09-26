@@ -3,6 +3,8 @@ import type {
   EvaluationCategory,
   EvaluationReport,
 } from "../types/evaluation.js";
+import { neighborHeadlines } from "../scoring/novelty-scorer.js";
+import type { FixedContent } from "../types/fixed-content.js";
 import type { Submission } from "../types/submission.js";
 
 export const DEMO_CASE_IDS = {
@@ -60,10 +62,10 @@ const findCase = (
 
 const neighborRows = (
   result: EvaluationCaseResult,
-  baselines: ReadonlyMap<string, Submission>,
+  headlines: ReadonlyMap<string, string>,
 ): string[] =>
   result.score.nearestNeighbors.map((neighbor) => {
-    const headline = baselines.get(neighbor.submissionId)?.headline ?? "Unknown";
+    const headline = headlines.get(neighbor.submissionId) ?? "Unknown";
     return `| ${neighbor.rank} | \`${neighbor.submissionId}\` | ${tableText(headline)} | ${score(neighbor.semanticSimilarity)} | ${score(neighbor.lexicalSimilarity)} | ${score(neighbor.semanticAggregationWeight)} | ${score(neighbor.semanticSimilarityContribution)} |`;
   });
 
@@ -88,16 +90,16 @@ const caseScoreTable = (result: EvaluationCaseResult): string[] => [
 
 const neighborTable = (
   result: EvaluationCaseResult,
-  baselines: ReadonlyMap<string, Submission>,
+  headlines: ReadonlyMap<string, string>,
 ): string[] => [
   "| Rank | Submission | Headline | Semantic similarity | Lexical similarity | Aggregation weight | Semantic contribution |",
   "|---:|---|---|---:|---:|---:|---:|",
-  ...neighborRows(result, baselines),
+  ...neighborRows(result, headlines),
 ];
 
 const failedCaseSection = (
   result: EvaluationCaseResult,
-  baselines: ReadonlyMap<string, Submission>,
+  headlines: ReadonlyMap<string, string>,
 ): string[] => [
   `### \`${result.id}\` — ${tableText(result.candidate.headline)}`,
   "",
@@ -116,14 +118,14 @@ const failedCaseSection = (
   "",
   `Top-${result.score.semantic.topK} semantic neighbors:`,
   "",
-  ...neighborTable(result, baselines),
+  ...neighborTable(result, headlines),
   "",
 ];
 
 const demoSection = (
   key: keyof typeof DEMO_CASE_IDS,
   result: EvaluationCaseResult,
-  baselines: ReadonlyMap<string, Submission>,
+  headlines: ReadonlyMap<string, string>,
 ): string[] => [
   `### ${DEMO_LABELS[key]} — \`${result.id}\``,
   "",
@@ -137,17 +139,16 @@ const demoSection = (
   "",
   `Top-${result.score.semantic.topK} semantic neighbors:`,
   "",
-  ...neighborTable(result, baselines),
+  ...neighborTable(result, headlines),
   "",
 ];
 
 export const renderEvaluationMarkdown = (
   report: EvaluationReport,
   baselineSubmissions: readonly Submission[],
+  fixedContent: FixedContent,
 ): string => {
-  const baselines = new Map(
-    baselineSubmissions.map((submission) => [submission.id, submission]),
-  );
+  const headlines = neighborHeadlines(baselineSubmissions, fixedContent);
   const novelRelevant = report.categories.novel_relevant.means.finalScore ?? 0;
   const duplicate = report.categories.duplicate.means.finalScore ?? 0;
   const paraphrase = report.categories.paraphrase.means.finalScore ?? 0;
@@ -216,14 +217,14 @@ export const renderEvaluationMarkdown = (
     `All ${report.failedCases.length} failed cases are included. Each passes its final-score and raw-novelty bounds but fails the labeled minimum relevance similarity of 0.350.`,
     "",
     ...report.failedCases.flatMap((result) =>
-      failedCaseSection(result, baselines),
+      failedCaseSection(result, headlines),
     ),
     "## Representative demo cases",
     "",
     "These fixed cases cover the three behaviors needed for the demo. Their explanations use only deterministic score components and stored baseline comparisons.",
     "",
     ...demos.flatMap(([key, caseId]) =>
-      demoSection(key, findCase(report, caseId), baselines),
+      demoSection(key, findCase(report, caseId), headlines),
     ),
     "## Explainability contract",
     "",

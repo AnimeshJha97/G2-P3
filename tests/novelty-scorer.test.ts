@@ -77,6 +77,14 @@ const novelRelevantCandidate: Submission = {
   perspective: "suggestion",
 };
 
+// Restates the fixed content instead of contributing a new idea.
+const restatedSourceCandidate: Submission = {
+  id: "candidate-restated-source",
+  headline: "AI support summaries",
+  body: "A support platform now creates automatic conversation summaries for agents.",
+  perspective: "observation",
+};
+
 const novelIrrelevantCandidate: Submission = {
   id: "candidate-novel-irrelevant",
   headline: "Change racing rules",
@@ -104,7 +112,9 @@ const createScorer = (): {
     [toSemanticText(baselines[0]), [0.2, 0.979795897, 0]],
     [toSemanticText(baselines[1]), [0.22, 0.975499872, 0]],
     [toSemanticText(baselines[2]), [0.18, 0.98366661, 0]],
-    [toSemanticText(novelRelevantCandidate), [1, 0, 0]],
+    // Relevant (above the mock relevance cutoff) without restating the source.
+    [toSemanticText(novelRelevantCandidate), [0.2, 0, 0.979795897]],
+    [toSemanticText(restatedSourceCandidate), [1, 0, 0]],
     [toSemanticText(novelIrrelevantCandidate), [0, 0, 1]],
   ]);
   const provider = new MockEmbeddingProvider(embeddings);
@@ -175,11 +185,45 @@ describe("NoveltyScorer", () => {
     expect(result.semantic.novelty).toBeGreaterThan(0.75);
     expect(result.lexical.novelty).toBeGreaterThan(0.9);
     expect(result.rawNovelty).toBeGreaterThan(0.8);
-    expect(result.relevance.similarity).toBe(1);
+    expect(result.relevance.similarity).toBeCloseTo(0.2);
     expect(result.relevance.gate).toBe(1);
     expect(result.finalScore).toBeCloseTo(result.rawNovelty);
     expect(result.nearestNeighbors.map(({ submissionId }) => submissionId))
-      .toEqual(["baseline-002", "baseline-001", "baseline-003"]);
+      .toEqual(["source-001", "baseline-002", "baseline-001"]);
+  });
+
+  it("compares against the fixed content so restating it is not rewarded", async () => {
+    const { scorer } = createScorer();
+    const prepared = await scorer.prepare(fixedContent, baselines);
+    const restated = await scorer.score(restatedSourceCandidate, prepared);
+    const novel = await scorer.score(novelRelevantCandidate, prepared);
+
+    expect(restated.relevance.similarity).toBe(1);
+    expect(restated.relevance.gate).toBe(1);
+    expect(restated.nearestNeighbors[0]).toMatchObject({
+      rank: 1,
+      submissionId: "source-001",
+      semanticSimilarity: 1,
+      lexicalSimilarity: 1,
+    });
+    expect(restated.lexical).toMatchObject({
+      mostSimilarSubmissionId: "source-001",
+      novelty: 0,
+    });
+    expect(restated.finalScore).toBeLessThan(0.3);
+    expect(restated.finalScore).toBeLessThan(novel.finalScore / 2);
+  });
+
+  it("rejects IDs that collide with the fixed content", async () => {
+    const { scorer } = createScorer();
+    const prepared = await scorer.prepare(fixedContent, baselines);
+
+    await expect(
+      scorer.score({ ...novelRelevantCandidate, id: fixedContent.id }, prepared),
+    ).rejects.toThrow("fixed content ID");
+    await expect(
+      scorer.prepare(fixedContent, [{ ...baselines[0], id: fixedContent.id }]),
+    ).rejects.toThrow("fixed content ID");
   });
 
   it("gates a novel but irrelevant submission to zero", async () => {

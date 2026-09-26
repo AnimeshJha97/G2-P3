@@ -44,6 +44,33 @@ describe("submission validation", () => {
         .success,
     ).toBe(false);
   });
+
+  it("requires real words in the headline and at least five in the body", () => {
+    const accepts = (fields: Partial<typeof validSubmission>): boolean =>
+      submissionSchema.safeParse({ ...validSubmission, ...fields }).success;
+
+    expect(accepts({ body: "ok" })).toBe(false);
+    expect(accepts({ body: "Four words only here." })).toBe(false);
+    expect(accepts({ body: "🚀 🔥 ✨ 🎉 💡 🚀" })).toBe(false);
+    expect(accepts({ body: "!!! ??? ... --- *** ###" })).toBe(false);
+    expect(accepts({ body: "Five words are enough here." })).toBe(true);
+    expect(accepts({ body: "Store 2 copies for 30 days." })).toBe(true);
+    expect(accepts({ body: "Los resúmenes ahorran tiempo mucho." })).toBe(true);
+    expect(accepts({ headline: "🚀🚀" })).toBe(false);
+    expect(accepts({ headline: "OK" })).toBe(true);
+  });
+
+  it("allows at most 100 words across headline and body", () => {
+    const words = (count: number): string =>
+      Array.from({ length: count }, (_, index) => `word${index}`).join(" ");
+    const accepts = (headline: string, body: string): boolean =>
+      submissionSchema.safeParse({ ...validSubmission, headline, body }).success;
+
+    expect(accepts(words(5), words(95))).toBe(true);
+    expect(accepts(words(5), words(96))).toBe(false);
+    expect(accepts(words(1), words(99))).toBe(true);
+    expect(accepts(words(1), words(100))).toBe(false);
+  });
 });
 
 describe("fixed-content validation", () => {

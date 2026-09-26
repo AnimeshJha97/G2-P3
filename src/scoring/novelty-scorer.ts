@@ -2,7 +2,11 @@ import type { EmbeddingProvider } from "../embeddings/embedding-provider.js";
 import { cosineSimilarity } from "../similarity/cosine.js";
 import { tokenJaccardSimilarity } from "../similarity/lexical.js";
 import { toSemanticText } from "../text/canonicalize.js";
-import { tokenizeLexicalText, toLexicalText } from "../text/normalize.js";
+import {
+  tokenizeLexicalText,
+  toFixedContentLexicalText,
+  toLexicalText,
+} from "../text/normalize.js";
 import type { FixedContent } from "../types/fixed-content.js";
 import type {
   NeighborScore,
@@ -25,6 +29,16 @@ import {
   selectTopSemanticMatches,
   type SemanticMatch,
 } from "./semantic-novelty.js";
+
+// Display labels for neighbor IDs; the fixed content can itself be a neighbor.
+export const neighborHeadlines = (
+  baselines: readonly Submission[],
+  fixedContent: FixedContent,
+): Map<string, string> =>
+  new Map([
+    ...baselines.map(({ id, headline }) => [id, headline] as const),
+    [fixedContent.id, `Fixed content: ${fixedContent.title ?? fixedContent.id}`],
+  ]);
 
 interface BaselineComparison extends SemanticMatch {
   lexicalSimilarity: number;
@@ -73,6 +87,10 @@ export class NoveltyScorer {
       throw new Error("Candidate ID must not match a baseline submission ID");
     }
 
+    if (validatedCandidate.id === prepared.fixedContent.id) {
+      throw new Error("Candidate ID must not match the fixed content ID");
+    }
+
     const candidateEmbedding = await this.embeddingProvider.embed(
       toSemanticText(validatedCandidate),
     );
@@ -80,16 +98,31 @@ export class NoveltyScorer {
       toLexicalText(validatedCandidate),
     );
 
-    const comparisons: BaselineComparison[] = prepared.baselines.map(
-      ({ submission, vector }) => ({
+    const relevanceSimilarity = cosineSimilarity(
+      candidateEmbedding,
+      prepared.fixedContentEmbedding,
+    );
+
+    // The fixed content is compared as one more baseline, so restating the
+    // source itself is not rewarded as a novel contribution.
+    const comparisons: BaselineComparison[] = [
+      ...prepared.baselines.map(({ submission, vector }) => ({
         submissionId: submission.id,
         similarity: cosineSimilarity(candidateEmbedding, vector),
         lexicalSimilarity: tokenJaccardSimilarity(
           candidateLexicalTokens,
           tokenizeLexicalText(toLexicalText(submission)),
         ),
-      }),
-    );
+      })),
+      {
+        submissionId: prepared.fixedContent.id,
+        similarity: relevanceSimilarity,
+        lexicalSimilarity: tokenJaccardSimilarity(
+          candidateLexicalTokens,
+          tokenizeLexicalText(toFixedContentLexicalText(prepared.fixedContent)),
+        ),
+      },
+    ];
 
     const topSemanticMatches = selectTopSemanticMatches(
       comparisons,
@@ -119,10 +152,6 @@ export class NoveltyScorer {
       this.config.lexicalWeight,
     );
 
-    const relevanceSimilarity = cosineSimilarity(
-      candidateEmbedding,
-      prepared.fixedContentEmbedding,
-    );
     const relevanceGate = calculateRelevanceGate(
       relevanceSimilarity,
       this.config.relevanceLow,

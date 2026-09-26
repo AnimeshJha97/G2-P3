@@ -15,4 +15,5 @@ export * from "./similarity/cosine.js";
 export * from "./similarity/lexical.js";
 export * from "./text/canonicalize.js";
 export * from "./text/normalize.js";
+export * from "./text/word-count.js";
 export * from "./types/index.js";

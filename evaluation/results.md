@@ -1,6 +1,6 @@
 # Evaluation Results
 
-Generated from the locked evaluation run at 2026-09-26T06:50:13.287Z. Numeric values are shown to three decimal places; machine-precision values remain in `evaluation/results.json`.
+Generated from the locked evaluation run at 2026-09-26T09:27:48.661Z. Numeric values are shown to three decimal places; machine-precision values remain in `evaluation/results.json`.
 
 ## Executive summary
 

@@ -41,6 +41,11 @@ export const prepareScoringContext = async (
     submissionSchema.parse(submission),
   );
 
+  // The fixed content ID also identifies it as a comparison neighbor.
+  if (validatedBaselines.some(({ id }) => id === validatedFixedContent.id)) {
+    throw new Error("Baseline submission IDs must not match the fixed content ID");
+  }
+
   const [fixedContentEmbedding, baselineEmbeddings] = await Promise.all([
     embeddingProvider.embed(toFixedContentText(validatedFixedContent)),
     embeddingProvider.embedMany(validatedBaselines.map(toSemanticText)),
