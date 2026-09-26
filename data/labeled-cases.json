@@ -1,0 +1,423 @@
+[
+  {
+    "id": "eval-duplicate-001",
+    "category": "duplicate",
+    "candidate": {
+      "id": "candidate-duplicate-001",
+      "headline": "Faster case handoffs",
+      "body": "Automatic conversation summaries should save agents time when a case moves between shifts or teams.",
+      "perspective": "support"
+    },
+    "expectation": {
+      "maxRawNovelty": 0.35,
+      "maxFinalScore": 0.35
+    },
+    "rationale": "The headline, body, and perspective exactly reproduce baseline submission-001, so both semantic and lexical novelty should be low."
+  },
+  {
+    "id": "eval-duplicate-002",
+    "category": "duplicate",
+    "candidate": {
+      "id": "candidate-duplicate-002",
+      "headline": "Configurable deletion windows",
+      "body": "Administrators should be able to choose how long generated summaries and extracted action items are retained.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "maxRawNovelty": 0.35,
+      "maxFinalScore": 0.35
+    },
+    "rationale": "This deliberately duplicates baseline submission-009 to verify exact repetition is not rewarded."
+  },
+  {
+    "id": "eval-duplicate-003",
+    "category": "duplicate",
+    "candidate": {
+      "id": "candidate-duplicate-003",
+      "headline": "Audit access to summaries",
+      "body": "Security logs should record who viewed, edited, exported, or shared each generated support record.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "maxRawNovelty": 0.35,
+      "maxFinalScore": 0.35
+    },
+    "rationale": "This is an exact content duplicate of baseline submission-043 under a distinct evaluation-only ID."
+  },
+  {
+    "id": "eval-near-duplicate-001",
+    "category": "near_duplicate",
+    "candidate": {
+      "id": "candidate-near-duplicate-001",
+      "headline": "Faster support handoffs",
+      "body": "Automatic conversation summaries can save agents time whenever a case passes between teams or shifts.",
+      "perspective": "support"
+    },
+    "expectation": {
+      "maxFinalScore": 0.5
+    },
+    "rationale": "This lightly rewrites baseline submission-001 while preserving its wording, meaning, and perspective."
+  },
+  {
+    "id": "eval-near-duplicate-002",
+    "category": "near_duplicate",
+    "candidate": {
+      "id": "candidate-near-duplicate-002",
+      "headline": "Choose deletion windows",
+      "body": "Administrators should choose how long generated action items and conversation summaries remain stored.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "maxFinalScore": 0.5
+    },
+    "rationale": "This changes the word order of baseline submission-009 but contributes the same retention-control idea."
+  },
+  {
+    "id": "eval-near-duplicate-003",
+    "category": "near_duplicate",
+    "candidate": {
+      "id": "candidate-near-duplicate-003",
+      "headline": "Link every claim to its source",
+      "body": "Each generated summary claim should link to the customer message supporting it so an agent can verify accuracy.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "maxFinalScore": 0.5
+    },
+    "rationale": "This is a small grammatical rewrite of baseline submission-014 with nearly identical tokens and intent."
+  },
+  {
+    "id": "eval-near-duplicate-004",
+    "category": "near_duplicate",
+    "candidate": {
+      "id": "candidate-near-duplicate-004",
+      "headline": "Limit Slack destinations",
+      "body": "Admins need rules preventing sensitive customer summaries from being posted into public Slack channels.",
+      "perspective": "concern"
+    },
+    "expectation": {
+      "maxFinalScore": 0.5
+    },
+    "rationale": "This closely restates baseline submission-022 using contractions and minor synonym substitutions."
+  },
+  {
+    "id": "eval-paraphrase-001",
+    "category": "paraphrase",
+    "candidate": {
+      "id": "candidate-paraphrase-001",
+      "headline": "Expire generated records by policy",
+      "body": "Each support group needs a configurable schedule that purges AI-created notes after its required storage period.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "maxFinalScore": 0.6
+    },
+    "rationale": "This semantically matches the baseline retention cluster while deliberately avoiding most of its surface wording."
+  },
+  {
+    "id": "eval-paraphrase-002",
+    "category": "paraphrase",
+    "candidate": {
+      "id": "candidate-paraphrase-002",
+      "headline": "Verify generated facts against the chat",
+      "body": "Reviewers need a direct trail from every machine-written assertion back to the original customer exchange.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "maxFinalScore": 0.6
+    },
+    "rationale": "This expresses the source-link verification idea from baseline submission-014 with low lexical overlap."
+  },
+  {
+    "id": "eval-paraphrase-003",
+    "category": "paraphrase",
+    "candidate": {
+      "id": "candidate-paraphrase-003",
+      "headline": "Keep automation under staff authority",
+      "body": "Machine-produced follow-ups must wait for a person to authorize them before they alter customer systems.",
+      "perspective": "concern"
+    },
+    "expectation": {
+      "maxFinalScore": 0.6
+    },
+    "rationale": "This paraphrases baseline submission-017's human-approval requirement without copying its main phrases."
+  },
+  {
+    "id": "eval-paraphrase-004",
+    "category": "paraphrase",
+    "candidate": {
+      "id": "candidate-paraphrase-004",
+      "headline": "Local idioms can alter meaning",
+      "body": "The assistant may misunderstand region-specific expressions when a customer switches between languages in one exchange.",
+      "perspective": "concern"
+    },
+    "expectation": {
+      "maxFinalScore": 0.6
+    },
+    "rationale": "This is a semantic restatement of the mixed-language and regional-phrase risk in baseline submission-027."
+  },
+  {
+    "id": "eval-common-001",
+    "category": "common",
+    "candidate": {
+      "id": "candidate-common-001",
+      "headline": "Central privacy dashboard",
+      "body": "Give administrators one place to review which customer information is processed, retained, and shared by the assistant.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "maxFinalScore": 0.7
+    },
+    "rationale": "The dashboard packaging is new, but privacy, retention, and admin visibility are already crowded baseline themes."
+  },
+  {
+    "id": "eval-common-002",
+    "category": "common",
+    "candidate": {
+      "id": "candidate-common-002",
+      "headline": "Review multilingual quality by region",
+      "body": "Analytics should let administrators compare summary accuracy across countries, languages, and dialect groups.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "maxFinalScore": 0.7
+    },
+    "rationale": "This combines the well-represented multilingual accuracy and administrator analytics themes."
+  },
+  {
+    "id": "eval-common-003",
+    "category": "common",
+    "candidate": {
+      "id": "candidate-common-003",
+      "headline": "Require review for sensitive summaries",
+      "body": "High-risk customer conversations should receive human approval before their generated summaries enter shared workflows.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "maxFinalScore": 0.7
+    },
+    "rationale": "Human review, sensitive data, summaries, and workflow controls all recur throughout the baseline."
+  },
+  {
+    "id": "eval-common-004",
+    "category": "common",
+    "candidate": {
+      "id": "candidate-common-004",
+      "headline": "Trend access should follow roles",
+      "body": "Only approved support roles should be able to open the conversations behind recurring-issue analytics.",
+      "perspective": "concern"
+    },
+    "expectation": {
+      "maxFinalScore": 0.7
+    },
+    "rationale": "This recombines existing role-based access, analytics explanation, and conversation privacy themes."
+  },
+  {
+    "id": "eval-novel-relevant-001",
+    "category": "novel_relevant",
+    "candidate": {
+      "id": "candidate-novel-relevant-001",
+      "headline": "Mark summaries stale after new replies",
+      "body": "When a customer adds messages after a summary is generated, label that summary as stale until the assistant refreshes it.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "minRawNovelty": 0.45,
+      "minRelevance": 0.35,
+      "minFinalScore": 0.15
+    },
+    "rationale": "Summary freshness is directly relevant to the announced feature and is not represented in the baseline."
+  },
+  {
+    "id": "eval-novel-relevant-002",
+    "category": "novel_relevant",
+    "candidate": {
+      "id": "candidate-novel-relevant-002",
+      "headline": "Flag conflicting follow-up owners",
+      "body": "Warn an agent when separate conversations assign the same customer follow-up to different teams before creating either task.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "minRawNovelty": 0.45,
+      "minRelevance": 0.35,
+      "minFinalScore": 0.15
+    },
+    "rationale": "Cross-conversation ownership conflicts are relevant to extracted action items but absent from existing submissions."
+  },
+  {
+    "id": "eval-novel-relevant-003",
+    "category": "novel_relevant",
+    "candidate": {
+      "id": "candidate-novel-relevant-003",
+      "headline": "Separate facts from unresolved questions",
+      "body": "Generated summaries should place unanswered customer questions in their own section instead of presenting them as settled facts.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "minRawNovelty": 0.45,
+      "minRelevance": 0.35,
+      "minFinalScore": 0.15
+    },
+    "rationale": "Structured treatment of unresolved questions is a new, product-specific approach to safer summaries."
+  },
+  {
+    "id": "eval-novel-relevant-004",
+    "category": "novel_relevant",
+    "candidate": {
+      "id": "candidate-novel-relevant-004",
+      "headline": "Exclude bot storms from issue trends",
+      "body": "Recurring-issue analytics should identify automated retry storms so one malfunctioning bot does not look like widespread customer demand.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "minRawNovelty": 0.45,
+      "minRelevance": 0.35,
+      "minFinalScore": 0.15
+    },
+    "rationale": "Bot-driven distortion is a novel analytics failure mode while remaining specific to recurring support issues."
+  },
+  {
+    "id": "eval-novel-relevant-005",
+    "category": "novel_relevant",
+    "candidate": {
+      "id": "candidate-novel-relevant-005",
+      "headline": "Preview workflow effects with replay",
+      "body": "Before enabling an automation rule, let administrators replay historical conversations to see which summaries and tasks it would have produced.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "minRawNovelty": 0.45,
+      "minRelevance": 0.35,
+      "minFinalScore": 0.15
+    },
+    "rationale": "Historical workflow replay is a new safety mechanism tied directly to summaries, action items, and admin rollout."
+  },
+  {
+    "id": "eval-novel-irrelevant-001",
+    "category": "novel_irrelevant",
+    "candidate": {
+      "id": "candidate-novel-irrelevant-001",
+      "headline": "Expand aerodynamic testing",
+      "body": "Formula One teams finishing last should receive more wind-tunnel time before the next racing season.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "minRawNovelty": 0.55,
+      "maxRelevance": 0.35,
+      "maxFinalScore": 0.25
+    },
+    "rationale": "Motorsport regulation is unlike the baseline and unrelated to AI-assisted customer support."
+  },
+  {
+    "id": "eval-novel-irrelevant-002",
+    "category": "novel_irrelevant",
+    "candidate": {
+      "id": "candidate-novel-irrelevant-002",
+      "headline": "Plant tomatoes beside basil",
+      "body": "Home gardeners can use companion planting and deep watering to improve vegetable yields during summer.",
+      "perspective": "observation"
+    },
+    "expectation": {
+      "minRawNovelty": 0.55,
+      "maxRelevance": 0.35,
+      "maxFinalScore": 0.25
+    },
+    "rationale": "Gardening advice should be novel relative to the baseline but irrelevant to the product announcement."
+  },
+  {
+    "id": "eval-novel-irrelevant-003",
+    "category": "novel_irrelevant",
+    "candidate": {
+      "id": "candidate-novel-irrelevant-003",
+      "headline": "Rest bread dough overnight",
+      "body": "A slow refrigerator fermentation can deepen flavor and create a more open crumb in a homemade loaf.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "minRawNovelty": 0.55,
+      "maxRelevance": 0.35,
+      "maxFinalScore": 0.25
+    },
+    "rationale": "Bread making has high topical novelty but no relationship to support summaries or workflows."
+  },
+  {
+    "id": "eval-novel-irrelevant-004",
+    "category": "novel_irrelevant",
+    "candidate": {
+      "id": "candidate-novel-irrelevant-004",
+      "headline": "Map dark-sky observation sites",
+      "body": "Amateur astronomers need a map combining cloud forecasts, moonlight, and local light pollution for telescope trips.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "minRawNovelty": 0.55,
+      "maxRelevance": 0.35,
+      "maxFinalScore": 0.25
+    },
+    "rationale": "Astronomy trip planning is intentionally unrelated despite being a coherent and potentially useful idea."
+  },
+  {
+    "id": "eval-novel-irrelevant-005",
+    "category": "novel_irrelevant",
+    "candidate": {
+      "id": "candidate-novel-irrelevant-005",
+      "headline": "Repair erosion on hiking trails",
+      "body": "Trail crews should add drainage bars and native ground cover where heavy rain repeatedly washes away soil.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "minRawNovelty": 0.55,
+      "maxRelevance": 0.35,
+      "maxFinalScore": 0.25
+    },
+    "rationale": "Trail maintenance is distant from every announced product capability and should be suppressed by relevance."
+  },
+  {
+    "id": "eval-borderline-001",
+    "category": "borderline",
+    "candidate": {
+      "id": "candidate-borderline-001",
+      "headline": "Explain personal-data processing",
+      "body": "AI products should clearly tell people how their personal information is collected, transformed, and removed.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "minRelevance": 0.25,
+      "maxRelevance": 0.65,
+      "maxFinalScore": 0.55
+    },
+    "rationale": "The statement concerns AI and privacy but does not engage directly with support summaries or this product's workflows."
+  },
+  {
+    "id": "eval-borderline-002",
+    "category": "borderline",
+    "candidate": {
+      "id": "candidate-borderline-002",
+      "headline": "Train employees before AI rollout",
+      "body": "Organizations introducing AI tools should teach staff how to question outputs and report unexpected behavior.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "minRelevance": 0.25,
+      "maxRelevance": 0.65,
+      "maxFinalScore": 0.55
+    },
+    "rationale": "Generic AI literacy is adjacent to human review but is not specific to the announced support assistant."
+  },
+  {
+    "id": "eval-borderline-003",
+    "category": "borderline",
+    "candidate": {
+      "id": "candidate-borderline-003",
+      "headline": "Report the energy cost of AI",
+      "body": "Software companies should publish how much electricity their AI features consume and how those estimates are calculated.",
+      "perspective": "suggestion"
+    },
+    "expectation": {
+      "minRelevance": 0.2,
+      "maxRelevance": 0.6,
+      "maxFinalScore": 0.55
+    },
+    "rationale": "AI sustainability relates to the technology in general but only weakly to the specific customer-support announcement."
+  }
+]

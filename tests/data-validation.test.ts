@@ -3,7 +3,9 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 import {
+  EVALUATION_CATEGORIES,
   fixedContentSchema,
+  labeledEvaluationCasesSchema,
   PERSPECTIVES,
   submissionSchema,
 } from "../src/types/index.js";
@@ -13,6 +15,7 @@ const loadJson = (relativePath: string): unknown =>
 
 const fixedContent = loadJson("../data/fixed-content.json");
 const submissions = loadJson("../data/submissions.json");
+const labeledCases = loadJson("../data/labeled-cases.json");
 
 const searchableText = (submission: {
   headline: string;
@@ -87,5 +90,44 @@ describe("static scoring data", () => {
     );
 
     expect(matchingSubmissions.length).toBeGreaterThanOrEqual(2);
+  });
+});
+
+describe("labeled evaluation data", () => {
+  it("contains 21-35 valid cases and represents every required category", () => {
+    const parsed = labeledEvaluationCasesSchema.parse(labeledCases);
+
+    expect(parsed.length).toBeGreaterThanOrEqual(21);
+    expect(parsed.length).toBeLessThanOrEqual(35);
+
+    for (const category of EVALUATION_CATEGORIES) {
+      expect(parsed.some((item) => item.category === category)).toBe(true);
+    }
+  });
+
+  it("keeps evaluation candidate IDs out of the baseline", () => {
+    const baseline = submissionSchema.array().parse(submissions);
+    const evaluation = labeledEvaluationCasesSchema.parse(labeledCases);
+    const baselineIds = new Set(baseline.map(({ id }) => id));
+
+    for (const { candidate } of evaluation) {
+      expect(baselineIds.has(candidate.id)).toBe(false);
+    }
+  });
+
+  it("uses baseline content only for intentional exact-duplicate cases", () => {
+    const baseline = submissionSchema.array().parse(submissions);
+    const evaluation = labeledEvaluationCasesSchema.parse(labeledCases);
+    const baselineContent = new Set(
+      baseline.map(
+        ({ headline, body, perspective }) =>
+          `${headline}\n${body}\n${perspective}`.toLowerCase(),
+      ),
+    );
+
+    for (const { category, candidate } of evaluation) {
+      const content = `${candidate.headline}\n${candidate.body}\n${candidate.perspective}`.toLowerCase();
+      expect(baselineContent.has(content)).toBe(category === "duplicate");
+    }
   });
 });

@@ -1,0 +1,2411 @@
+{
+  "generatedAt": "2026-09-26T05:54:47.731Z",
+  "durationMs": 548.0285,
+  "embeddingModel": "Xenova/all-MiniLM-L6-v2",
+  "config": {
+    "topK": 3,
+    "semanticNeighborWeights": [
+      0.6,
+      0.3,
+      0.1
+    ],
+    "semanticWeight": 0.85,
+    "lexicalWeight": 0.15,
+    "relevanceLow": 0,
+    "relevanceHigh": 1
+  },
+  "baselineCount": 50,
+  "evaluationCount": 28,
+  "summary": {
+    "total": 28,
+    "passed": 24,
+    "failed": 4,
+    "passRate": 0.8571428571428571
+  },
+  "categories": {
+    "duplicate": {
+      "category": "duplicate",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "passRate": 1,
+      "means": {
+        "finalScore": 0.03359133300523696,
+        "rawNovelty": 0.1291756644498254,
+        "semanticNovelty": 0.15197136994097105,
+        "lexicalNovelty": 0,
+        "relevance": 0.2734352424336269,
+        "relevanceGate": 0.2734352424336269
+      },
+      "caseIds": [
+        "eval-duplicate-001",
+        "eval-duplicate-002",
+        "eval-duplicate-003"
+      ],
+      "failedCaseIds": []
+    },
+    "near_duplicate": {
+      "category": "near_duplicate",
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "passRate": 1,
+      "means": {
+        "finalScore": 0.07177747998376718,
+        "rawNovelty": 0.23685156992260462,
+        "semanticNovelty": 0.19655213427636944,
+        "lexicalNovelty": 0.46521503858460383,
+        "relevance": 0.3188623429869695,
+        "relevanceGate": 0.3188623429869695
+      },
+      "caseIds": [
+        "eval-near-duplicate-001",
+        "eval-near-duplicate-002",
+        "eval-near-duplicate-003",
+        "eval-near-duplicate-004"
+      ],
+      "failedCaseIds": []
+    },
+    "paraphrase": {
+      "category": "paraphrase",
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "passRate": 1,
+      "means": {
+        "finalScore": 0.17296179928103037,
+        "rawNovelty": 0.4923522074741372,
+        "semanticNovelty": 0.4276646374101603,
+        "lexicalNovelty": 0.8589151045033399,
+        "relevance": 0.3472118070265926,
+        "relevanceGate": 0.3472118070265926
+      },
+      "caseIds": [
+        "eval-paraphrase-001",
+        "eval-paraphrase-002",
+        "eval-paraphrase-003",
+        "eval-paraphrase-004"
+      ],
+      "failedCaseIds": []
+    },
+    "common": {
+      "category": "common",
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "passRate": 1,
+      "means": {
+        "finalScore": 0.13300916737854823,
+        "rawNovelty": 0.42870102257310433,
+        "semanticNovelty": 0.36441664680606844,
+        "lexicalNovelty": 0.7929791519196414,
+        "relevance": 0.31713540028582476,
+        "relevanceGate": 0.31713540028582476
+      },
+      "caseIds": [
+        "eval-common-001",
+        "eval-common-002",
+        "eval-common-003",
+        "eval-common-004"
+      ],
+      "failedCaseIds": []
+    },
+    "novel_relevant": {
+      "category": "novel_relevant",
+      "total": 5,
+      "passed": 1,
+      "failed": 4,
+      "passRate": 0.2,
+      "means": {
+        "finalScore": 0.15945015991880057,
+        "rawNovelty": 0.5192195691535503,
+        "semanticNovelty": 0.4592441755751751,
+        "lexicalNovelty": 0.8590801327643434,
+        "relevance": 0.30919957537218573,
+        "relevanceGate": 0.30919957537218573
+      },
+      "caseIds": [
+        "eval-novel-relevant-001",
+        "eval-novel-relevant-002",
+        "eval-novel-relevant-003",
+        "eval-novel-relevant-004",
+        "eval-novel-relevant-005"
+      ],
+      "failedCaseIds": [
+        "eval-novel-relevant-001",
+        "eval-novel-relevant-003",
+        "eval-novel-relevant-004",
+        "eval-novel-relevant-005"
+      ]
+    },
+    "novel_irrelevant": {
+      "category": "novel_irrelevant",
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "passRate": 1,
+      "means": {
+        "finalScore": 0.03782308199224269,
+        "rawNovelty": 0.8157764741047776,
+        "semanticNovelty": 0.7973291212047069,
+        "lexicalNovelty": 0.9203114738718453,
+        "relevance": 0.04747532352361218,
+        "relevanceGate": 0.04747532352361218
+      },
+      "caseIds": [
+        "eval-novel-irrelevant-001",
+        "eval-novel-irrelevant-002",
+        "eval-novel-irrelevant-003",
+        "eval-novel-irrelevant-004",
+        "eval-novel-irrelevant-005"
+      ],
+      "failedCaseIds": []
+    },
+    "borderline": {
+      "category": "borderline",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "passRate": 1,
+      "means": {
+        "finalScore": 0.19519756559550763,
+        "rawNovelty": 0.5294928121556769,
+        "semanticNovelty": 0.46723536102558255,
+        "lexicalNovelty": 0.8822850352262117,
+        "relevance": 0.3737202304891003,
+        "relevanceGate": 0.3737202304891003
+      },
+      "caseIds": [
+        "eval-borderline-001",
+        "eval-borderline-002",
+        "eval-borderline-003"
+      ],
+      "failedCaseIds": []
+    }
+  },
+  "failedCases": [
+    {
+      "id": "eval-novel-relevant-001",
+      "category": "novel_relevant",
+      "candidate": {
+        "id": "candidate-novel-relevant-001",
+        "headline": "Mark summaries stale after new replies",
+        "body": "When a customer adds messages after a summary is generated, label that summary as stale until the assistant refreshes it.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "minFinalScore": 0.15,
+        "minRawNovelty": 0.45,
+        "minRelevance": 0.35
+      },
+      "rationale": "Summary freshness is directly relevant to the announced feature and is not represented in the baseline.",
+      "score": {
+        "finalScore": 0.12719371693854978,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.5747807236341219,
+          "novelty": 0.4252192763658781
+        },
+        "lexical": {
+          "maxSimilarity": 0.16666666666666666,
+          "novelty": 0.8333333333333334
+        },
+        "rawNovelty": 0.4864363849109964,
+        "relevance": {
+          "similarity": 0.2614806804836824,
+          "gate": 0.2614806804836824
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-004",
+            "semanticSimilarity": 0.591552764694954,
+            "lexicalSimilarity": 0.08108108108108109
+          },
+          {
+            "submissionId": "submission-014",
+            "semanticSimilarity": 0.5521391008585979,
+            "lexicalSimilarity": 0.15789473684210525
+          },
+          {
+            "submissionId": "submission-016",
+            "semanticSimilarity": 0.5420733455957008,
+            "lexicalSimilarity": 0.125
+          }
+        ]
+      },
+      "passed": false,
+      "checks": [
+        {
+          "expectation": "minFinalScore",
+          "metric": "finalScore",
+          "operator": "min",
+          "expected": 0.15,
+          "actual": 0.12719371693854978,
+          "passed": false
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.45,
+          "actual": 0.4864363849109964,
+          "passed": true
+        },
+        {
+          "expectation": "minRelevance",
+          "metric": "relevance",
+          "operator": "min",
+          "expected": 0.35,
+          "actual": 0.2614806804836824,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-relevant-003",
+      "category": "novel_relevant",
+      "candidate": {
+        "id": "candidate-novel-relevant-003",
+        "headline": "Separate facts from unresolved questions",
+        "body": "Generated summaries should place unanswered customer questions in their own section instead of presenting them as settled facts.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "minFinalScore": 0.15,
+        "minRawNovelty": 0.45,
+        "minRelevance": 0.35
+      },
+      "rationale": "Structured treatment of unresolved questions is a new, product-specific approach to safer summaries.",
+      "score": {
+        "finalScore": 0.14464014900680128,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.4586948323430805,
+          "novelty": 0.5413051676569195
+        },
+        "lexical": {
+          "maxSimilarity": 0.10526315789473684,
+          "novelty": 0.8947368421052632
+        },
+        "rawNovelty": 0.594319918824171,
+        "relevance": {
+          "similarity": 0.24337085873373349,
+          "gate": 0.24337085873373349
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-004",
+            "semanticSimilarity": 0.4612330995202817,
+            "lexicalSimilarity": 0.02631578947368421
+          },
+          {
+            "submissionId": "submission-032",
+            "semanticSimilarity": 0.4552175071600312,
+            "lexicalSimilarity": 0.08108108108108109
+          },
+          {
+            "submissionId": "submission-013",
+            "semanticSimilarity": 0.4538972048290206,
+            "lexicalSimilarity": 0.05405405405405406
+          }
+        ]
+      },
+      "passed": false,
+      "checks": [
+        {
+          "expectation": "minFinalScore",
+          "metric": "finalScore",
+          "operator": "min",
+          "expected": 0.15,
+          "actual": 0.14464014900680128,
+          "passed": false
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.45,
+          "actual": 0.594319918824171,
+          "passed": true
+        },
+        {
+          "expectation": "minRelevance",
+          "metric": "relevance",
+          "operator": "min",
+          "expected": 0.35,
+          "actual": 0.24337085873373349,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-relevant-004",
+      "category": "novel_relevant",
+      "candidate": {
+        "id": "candidate-novel-relevant-004",
+        "headline": "Exclude bot storms from issue trends",
+        "body": "Recurring-issue analytics should identify automated retry storms so one malfunctioning bot does not look like widespread customer demand.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "minFinalScore": 0.15,
+        "minRawNovelty": 0.45,
+        "minRelevance": 0.35
+      },
+      "rationale": "Bot-driven distortion is a novel analytics failure mode while remaining specific to recurring support issues.",
+      "score": {
+        "finalScore": 0.17440351940248974,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.5080906115466035,
+          "novelty": 0.4919093884533965
+        },
+        "lexical": {
+          "maxSimilarity": 0.16666666666666666,
+          "novelty": 0.8333333333333334
+        },
+        "rawNovelty": 0.543122980185387,
+        "relevance": {
+          "similarity": 0.32111239215648674,
+          "gate": 0.32111239215648674
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-040",
+            "semanticSimilarity": 0.5136586308212673,
+            "lexicalSimilarity": 0.05555555555555555
+          },
+          {
+            "submissionId": "submission-037",
+            "semanticSimilarity": 0.5049144227838235,
+            "lexicalSimilarity": 0.05128205128205128
+          },
+          {
+            "submissionId": "submission-038",
+            "semanticSimilarity": 0.4842110621869604,
+            "lexicalSimilarity": 0.1388888888888889
+          }
+        ]
+      },
+      "passed": false,
+      "checks": [
+        {
+          "expectation": "minFinalScore",
+          "metric": "finalScore",
+          "operator": "min",
+          "expected": 0.15,
+          "actual": 0.17440351940248974,
+          "passed": true
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.45,
+          "actual": 0.543122980185387,
+          "passed": true
+        },
+        {
+          "expectation": "minRelevance",
+          "metric": "relevance",
+          "operator": "min",
+          "expected": 0.35,
+          "actual": 0.32111239215648674,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-relevant-005",
+      "category": "novel_relevant",
+      "candidate": {
+        "id": "candidate-novel-relevant-005",
+        "headline": "Preview workflow effects with replay",
+        "body": "Before enabling an automation rule, let administrators replay historical conversations to see which summaries and tasks it would have produced.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "minFinalScore": 0.15,
+        "minRawNovelty": 0.45,
+        "minRelevance": 0.35
+      },
+      "rationale": "Historical workflow replay is a new safety mechanism tied directly to summaries, action items, and admin rollout.",
+      "score": {
+        "finalScore": 0.1553041463563739,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.605985159371839,
+          "novelty": 0.39401484062816095
+        },
+        "lexical": {
+          "maxSimilarity": 0.10810810810810811,
+          "novelty": 0.8918918918918919
+        },
+        "rawNovelty": 0.4686963983177206,
+        "relevance": {
+          "similarity": 0.3313534025731858,
+          "gate": 0.3313534025731858
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-003",
+            "semanticSimilarity": 0.6216493906798436,
+            "lexicalSimilarity": 0.04878048780487805
+          },
+          {
+            "submissionId": "submission-020",
+            "semanticSimilarity": 0.5921061237564129,
+            "lexicalSimilarity": 0.05128205128205128
+          },
+          {
+            "submissionId": "submission-023",
+            "semanticSimilarity": 0.5536368783700885,
+            "lexicalSimilarity": 0.05
+          }
+        ]
+      },
+      "passed": false,
+      "checks": [
+        {
+          "expectation": "minFinalScore",
+          "metric": "finalScore",
+          "operator": "min",
+          "expected": 0.15,
+          "actual": 0.1553041463563739,
+          "passed": true
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.45,
+          "actual": 0.4686963983177206,
+          "passed": true
+        },
+        {
+          "expectation": "minRelevance",
+          "metric": "relevance",
+          "operator": "min",
+          "expected": 0.35,
+          "actual": 0.3313534025731858,
+          "passed": false
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "eval-duplicate-001",
+      "category": "duplicate",
+      "candidate": {
+        "id": "candidate-duplicate-001",
+        "headline": "Faster case handoffs",
+        "body": "Automatic conversation summaries should save agents time when a case moves between shifts or teams.",
+        "perspective": "support"
+      },
+      "expectation": {
+        "maxFinalScore": 0.35,
+        "maxRawNovelty": 0.35
+      },
+      "rationale": "The headline, body, and perspective exactly reproduce baseline submission-001, so both semantic and lexical novelty should be low.",
+      "score": {
+        "finalScore": 0.041474801500257286,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.874254341897918,
+          "novelty": 0.12574565810208205
+        },
+        "lexical": {
+          "maxSimilarity": 1,
+          "novelty": 0
+        },
+        "rawNovelty": 0.10688380938676974,
+        "relevance": {
+          "similarity": 0.38803633345604827,
+          "gate": 0.38803633345604827
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-001",
+            "semanticSimilarity": 1,
+            "lexicalSimilarity": 1
+          },
+          {
+            "submissionId": "submission-004",
+            "semanticSimilarity": 0.6997111250594517,
+            "lexicalSimilarity": 0.16666666666666666
+          },
+          {
+            "submissionId": "submission-018",
+            "semanticSimilarity": 0.6434100438008233,
+            "lexicalSimilarity": 0.08571428571428572
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.35,
+          "actual": 0.041474801500257286,
+          "passed": true
+        },
+        {
+          "expectation": "maxRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "max",
+          "expected": 0.35,
+          "actual": 0.10688380938676974,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-duplicate-002",
+      "category": "duplicate",
+      "candidate": {
+        "id": "candidate-duplicate-002",
+        "headline": "Configurable deletion windows",
+        "body": "Administrators should be able to choose how long generated summaries and extracted action items are retained.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.35,
+        "maxRawNovelty": 0.35
+      },
+      "rationale": "This deliberately duplicates baseline submission-009 to verify exact repetition is not rewarded.",
+      "score": {
+        "finalScore": 0.026330073923149535,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.8176528123006548,
+          "novelty": 0.18234718769934521
+        },
+        "lexical": {
+          "maxSimilarity": 1,
+          "novelty": 0
+        },
+        "rawNovelty": 0.15499510954444343,
+        "relevance": {
+          "similarity": 0.16987680450394874,
+          "gate": 0.16987680450394874
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-009",
+            "semanticSimilarity": 1,
+            "lexicalSimilarity": 1
+          },
+          {
+            "submissionId": "submission-010",
+            "semanticSimilarity": 0.5480812555571234,
+            "lexicalSimilarity": 0.08823529411764706
+          },
+          {
+            "submissionId": "submission-033",
+            "semanticSimilarity": 0.5322843563351769,
+            "lexicalSimilarity": 0.23333333333333334
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.35,
+          "actual": 0.026330073923149535,
+          "passed": true
+        },
+        {
+          "expectation": "maxRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "max",
+          "expected": 0.35,
+          "actual": 0.15499510954444343,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-duplicate-003",
+      "category": "duplicate",
+      "candidate": {
+        "id": "candidate-duplicate-003",
+        "headline": "Audit access to summaries",
+        "body": "Security logs should record who viewed, edited, exported, or shared each generated support record.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.35,
+        "maxRawNovelty": 0.35
+      },
+      "rationale": "This is an exact content duplicate of baseline submission-043 under a distinct evaluation-only ID.",
+      "score": {
+        "finalScore": 0.03296912359230406,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.8521787359785141,
+          "novelty": 0.14782126402148588
+        },
+        "lexical": {
+          "maxSimilarity": 1,
+          "novelty": 0
+        },
+        "rawNovelty": 0.12564807441826298,
+        "relevance": {
+          "similarity": 0.2623925893408836,
+          "gate": 0.2623925893408836
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-043",
+            "semanticSimilarity": 0.9999999999999999,
+            "lexicalSimilarity": 1
+          },
+          {
+            "submissionId": "submission-020",
+            "semanticSimilarity": 0.6505862020668649,
+            "lexicalSimilarity": 0.1724137931034483
+          },
+          {
+            "submissionId": "submission-033",
+            "semanticSimilarity": 0.5700287535845471,
+            "lexicalSimilarity": 0.12903225806451613
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.35,
+          "actual": 0.03296912359230406,
+          "passed": true
+        },
+        {
+          "expectation": "maxRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "max",
+          "expected": 0.35,
+          "actual": 0.12564807441826298,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-near-duplicate-001",
+      "category": "near_duplicate",
+      "candidate": {
+        "id": "candidate-near-duplicate-001",
+        "headline": "Faster support handoffs",
+        "body": "Automatic conversation summaries can save agents time whenever a case passes between teams or shifts.",
+        "perspective": "support"
+      },
+      "expectation": {
+        "maxFinalScore": 0.5
+      },
+      "rationale": "This lightly rewrites baseline submission-001 while preserving its wording, meaning, and perspective.",
+      "score": {
+        "finalScore": 0.08204517228805785,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.8605297425875449,
+          "novelty": 0.1394702574124551
+        },
+        "lexical": {
+          "maxSimilarity": 0.6666666666666666,
+          "novelty": 0.33333333333333337
+        },
+        "rawNovelty": 0.16854971880058683,
+        "relevance": {
+          "similarity": 0.48677133887791574,
+          "gate": 0.48677133887791574
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-001",
+            "semanticSimilarity": 0.960490897271349,
+            "lexicalSimilarity": 0.6666666666666666
+          },
+          {
+            "submissionId": "submission-004",
+            "semanticSimilarity": 0.7129867520007812,
+            "lexicalSimilarity": 0.16129032258064516
+          },
+          {
+            "submissionId": "submission-018",
+            "semanticSimilarity": 0.703391786245011,
+            "lexicalSimilarity": 0.14705882352941177
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.5,
+          "actual": 0.08204517228805785,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-near-duplicate-002",
+      "category": "near_duplicate",
+      "candidate": {
+        "id": "candidate-near-duplicate-002",
+        "headline": "Choose deletion windows",
+        "body": "Administrators should choose how long generated action items and conversation summaries remain stored.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.5
+      },
+      "rationale": "This changes the word order of baseline submission-009 but contributes the same retention-control idea.",
+      "score": {
+        "finalScore": 0.05351699989848816,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.7763854378305317,
+          "novelty": 0.2236145621694683
+        },
+        "lexical": {
+          "maxSimilarity": 0.5454545454545454,
+          "novelty": 0.4545454545454546
+        },
+        "rawNovelty": 0.25825419602586625,
+        "relevance": {
+          "similarity": 0.2072260614620488,
+          "gate": 0.2072260614620488
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-009",
+            "semanticSimilarity": 0.8846834813177823,
+            "lexicalSimilarity": 0.5454545454545454
+          },
+          {
+            "submissionId": "submission-010",
+            "semanticSimilarity": 0.6203918493303119,
+            "lexicalSimilarity": 0.13793103448275862
+          },
+          {
+            "submissionId": "submission-023",
+            "semanticSimilarity": 0.5945779424076871,
+            "lexicalSimilarity": 0.1
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.5,
+          "actual": 0.05351699989848816,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-near-duplicate-003",
+      "category": "near_duplicate",
+      "candidate": {
+        "id": "candidate-near-duplicate-003",
+        "headline": "Link every claim to its source",
+        "body": "Each generated summary claim should link to the customer message supporting it so an agent can verify accuracy.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.5
+      },
+      "rationale": "This is a small grammatical rewrite of baseline submission-014 with nearly identical tokens and intent.",
+      "score": {
+        "finalScore": 0.06942947358382319,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.7951578095524626,
+          "novelty": 0.20484219044753738
+        },
+        "lexical": {
+          "maxSimilarity": 0.5357142857142857,
+          "novelty": 0.4642857142857143
+        },
+        "rawNovelty": 0.2437587190232639,
+        "relevance": {
+          "similarity": 0.2848286775629017,
+          "gate": 0.2848286775629017
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-014",
+            "semanticSimilarity": 0.949043463984814,
+            "lexicalSimilarity": 0.5357142857142857
+          },
+          {
+            "submissionId": "submission-013",
+            "semanticSimilarity": 0.5701212651983503,
+            "lexicalSimilarity": 0.18181818181818182
+          },
+          {
+            "submissionId": "submission-029",
+            "semanticSimilarity": 0.546953516020692,
+            "lexicalSimilarity": 0.025
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.5,
+          "actual": 0.06942947358382319,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-near-duplicate-004",
+      "category": "near_duplicate",
+      "candidate": {
+        "id": "candidate-near-duplicate-004",
+        "headline": "Limit Slack destinations",
+        "body": "Admins need rules preventing sensitive customer summaries from being posted into public Slack channels.",
+        "perspective": "concern"
+      },
+      "expectation": {
+        "maxFinalScore": 0.5
+      },
+      "rationale": "This closely restates baseline submission-022 using contractions and minor synonym substitutions.",
+      "score": {
+        "finalScore": 0.08211827416469954,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.781718472923983,
+          "novelty": 0.218281527076017
+        },
+        "lexical": {
+          "maxSimilarity": 0.391304347826087,
+          "novelty": 0.6086956521739131
+        },
+        "rawNovelty": 0.2768436458407014,
+        "relevance": {
+          "similarity": 0.296623294045012,
+          "gate": 0.296623294045012
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-022",
+            "semanticSimilarity": 0.8750666702529262,
+            "lexicalSimilarity": 0.391304347826087
+          },
+          {
+            "submissionId": "submission-021",
+            "semanticSimilarity": 0.6542075557465069,
+            "lexicalSimilarity": 0.0625
+          },
+          {
+            "submissionId": "submission-042",
+            "semanticSimilarity": 0.6041620404827506,
+            "lexicalSimilarity": 0.1
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.5,
+          "actual": 0.08211827416469954,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-paraphrase-001",
+      "category": "paraphrase",
+      "candidate": {
+        "id": "candidate-paraphrase-001",
+        "headline": "Expire generated records by policy",
+        "body": "Each support group needs a configurable schedule that purges AI-created notes after its required storage period.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.6
+      },
+      "rationale": "This semantically matches the baseline retention cluster while deliberately avoiding most of its surface wording.",
+      "score": {
+        "finalScore": 0.18108602509499871,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.5315056617704008,
+          "novelty": 0.4684943382295992
+        },
+        "lexical": {
+          "maxSimilarity": 0.11764705882352941,
+          "novelty": 0.8823529411764706
+        },
+        "rawNovelty": 0.5305731286716299,
+        "relevance": {
+          "similarity": 0.3413026693386734,
+          "gate": 0.3413026693386734
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-012",
+            "semanticSimilarity": 0.5451200925720245,
+            "lexicalSimilarity": 0.10810810810810811
+          },
+          {
+            "submissionId": "submission-011",
+            "semanticSimilarity": 0.5199527271641806,
+            "lexicalSimilarity": 0.11764705882352941
+          },
+          {
+            "submissionId": "submission-003",
+            "semanticSimilarity": 0.48447788077931814,
+            "lexicalSimilarity": 0.05128205128205128
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.6,
+          "actual": 0.18108602509499871,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-paraphrase-002",
+      "category": "paraphrase",
+      "candidate": {
+        "id": "candidate-paraphrase-002",
+        "headline": "Verify generated facts against the chat",
+        "body": "Reviewers need a direct trail from every machine-written assertion back to the original customer exchange.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.6
+      },
+      "rationale": "This expresses the source-link verification idea from baseline submission-014 with low lexical overlap.",
+      "score": {
+        "finalScore": 0.1416006663216876,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.5984045506471865,
+          "novelty": 0.40159544935281355
+        },
+        "lexical": {
+          "maxSimilarity": 0.14705882352941177,
+          "novelty": 0.8529411764705882
+        },
+        "rawNovelty": 0.46929730842047973,
+        "relevance": {
+          "similarity": 0.30172912518564166,
+          "gate": 0.30172912518564166
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-029",
+            "semanticSimilarity": 0.6089065879834454,
+            "lexicalSimilarity": 0.05128205128205128
+          },
+          {
+            "submissionId": "submission-014",
+            "semanticSimilarity": 0.585866288699949,
+            "lexicalSimilarity": 0.13157894736842105
+          },
+          {
+            "submissionId": "submission-013",
+            "semanticSimilarity": 0.5730071124713446,
+            "lexicalSimilarity": 0.08333333333333333
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.6,
+          "actual": 0.1416006663216876,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-paraphrase-003",
+      "category": "paraphrase",
+      "candidate": {
+        "id": "candidate-paraphrase-003",
+        "headline": "Keep automation under staff authority",
+        "body": "Machine-produced follow-ups must wait for a person to authorize them before they alter customer systems.",
+        "perspective": "concern"
+      },
+      "expectation": {
+        "maxFinalScore": 0.6
+      },
+      "rationale": "This paraphrases baseline submission-017's human-approval requirement without copying its main phrases.",
+      "score": {
+        "finalScore": 0.2409249627218181,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.5270758664170349,
+          "novelty": 0.47292413358296514
+        },
+        "lexical": {
+          "maxSimilarity": 0.1282051282051282,
+          "novelty": 0.8717948717948718
+        },
+        "rawNovelty": 0.5327547443147511,
+        "relevance": {
+          "similarity": 0.4522249032839768,
+          "gate": 0.4522249032839768
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-017",
+            "semanticSimilarity": 0.5313623745786321,
+            "lexicalSimilarity": 0.075
+          },
+          {
+            "submissionId": "submission-034",
+            "semanticSimilarity": 0.5235979585215655,
+            "lexicalSimilarity": 0.07692307692307693
+          },
+          {
+            "submissionId": "submission-031",
+            "semanticSimilarity": 0.511790541133858,
+            "lexicalSimilarity": 0
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.6,
+          "actual": 0.2409249627218181,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-paraphrase-004",
+      "category": "paraphrase",
+      "candidate": {
+        "id": "candidate-paraphrase-004",
+        "headline": "Local idioms can alter meaning",
+        "body": "The assistant may misunderstand region-specific expressions when a customer switches between languages in one exchange.",
+        "perspective": "concern"
+      },
+      "expectation": {
+        "maxFinalScore": 0.6
+      },
+      "rationale": "This is a semantic restatement of the mixed-language and regional-phrase risk in baseline submission-027.",
+      "score": {
+        "finalScore": 0.12823554298561704,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.6323553715247365,
+          "novelty": 0.36764462847526347
+        },
+        "lexical": {
+          "maxSimilarity": 0.17142857142857143,
+          "novelty": 0.8285714285714285
+        },
+        "rawNovelty": 0.4367836484896882,
+        "relevance": {
+          "similarity": 0.2935905302980784,
+          "gate": 0.2935905302980784
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-027",
+            "semanticSimilarity": 0.654125061757823,
+            "lexicalSimilarity": 0.11428571428571428
+          },
+          {
+            "submissionId": "submission-028",
+            "semanticSimilarity": 0.6154903989593778,
+            "lexicalSimilarity": 0.11764705882352941
+          },
+          {
+            "submissionId": "submission-025",
+            "semanticSimilarity": 0.5523321478222923,
+            "lexicalSimilarity": 0.14285714285714285
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.6,
+          "actual": 0.12823554298561704,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-common-001",
+      "category": "common",
+      "candidate": {
+        "id": "candidate-common-001",
+        "headline": "Central privacy dashboard",
+        "body": "Give administrators one place to review which customer information is processed, retained, and shared by the assistant.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.7
+      },
+      "rationale": "The dashboard packaging is new, but privacy, retention, and admin visibility are already crowded baseline themes.",
+      "score": {
+        "finalScore": 0.17027246021218545,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.6389788731088655,
+          "novelty": 0.3610211268911345
+        },
+        "lexical": {
+          "maxSimilarity": 0.25,
+          "novelty": 0.75
+        },
+        "rawNovelty": 0.41936795785746434,
+        "relevance": {
+          "similarity": 0.40602162616834453,
+          "gate": 0.40602162616834453
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-006",
+            "semanticSimilarity": 0.6752215944850827,
+            "lexicalSimilarity": 0.25
+          },
+          {
+            "submissionId": "submission-008",
+            "semanticSimilarity": 0.5868375488145939,
+            "lexicalSimilarity": 0.08571428571428572
+          },
+          {
+            "submissionId": "submission-033",
+            "semanticSimilarity": 0.5779465177343761,
+            "lexicalSimilarity": 0.08571428571428572
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.7,
+          "actual": 0.17027246021218545,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-common-002",
+      "category": "common",
+      "candidate": {
+        "id": "candidate-common-002",
+        "headline": "Review multilingual quality by region",
+        "body": "Analytics should let administrators compare summary accuracy across countries, languages, and dialect groups.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.7
+      },
+      "rationale": "This combines the well-represented multilingual accuracy and administrator analytics themes.",
+      "score": {
+        "finalScore": 0.08855208095370158,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.5905958349165152,
+          "novelty": 0.40940416508348476
+        },
+        "lexical": {
+          "maxSimilarity": 0.1724137931034483,
+          "novelty": 0.8275862068965517
+        },
+        "rawNovelty": 0.47213147135544475,
+        "relevance": {
+          "similarity": 0.1875580983819548,
+          "gate": 0.1875580983819548
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-026",
+            "semanticSimilarity": 0.6149138404843884,
+            "lexicalSimilarity": 0.13793103448275862
+          },
+          {
+            "submissionId": "submission-027",
+            "semanticSimilarity": 0.5549836410187413,
+            "lexicalSimilarity": 0.02857142857142857
+          },
+          {
+            "submissionId": "submission-025",
+            "semanticSimilarity": 0.5515243832025977,
+            "lexicalSimilarity": 0.08823529411764706
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.7,
+          "actual": 0.08855208095370158,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-common-003",
+      "category": "common",
+      "candidate": {
+        "id": "candidate-common-003",
+        "headline": "Require review for sensitive summaries",
+        "body": "High-risk customer conversations should receive human approval before their generated summaries enter shared workflows.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.7
+      },
+      "rationale": "Human review, sensitive data, summaries, and workflow controls all recur throughout the baseline.",
+      "score": {
+        "finalScore": 0.14444324825506483,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.5770388567935646,
+          "novelty": 0.4229611432064354
+        },
+        "lexical": {
+          "maxSimilarity": 0.21212121212121213,
+          "novelty": 0.7878787878787878
+        },
+        "rawNovelty": 0.47769878990728826,
+        "relevance": {
+          "similarity": 0.3023730671017575,
+          "gate": 0.3023730671017575
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-017",
+            "semanticSimilarity": 0.5878771008165817,
+            "lexicalSimilarity": 0.21212121212121213
+          },
+          {
+            "submissionId": "submission-025",
+            "semanticSimilarity": 0.5614870513681254,
+            "lexicalSimilarity": 0.05555555555555555
+          },
+          {
+            "submissionId": "submission-032",
+            "semanticSimilarity": 0.5586648089317785,
+            "lexicalSimilarity": 0.05555555555555555
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.7,
+          "actual": 0.14444324825506483,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-common-004",
+      "category": "common",
+      "candidate": {
+        "id": "candidate-common-004",
+        "headline": "Trend access should follow roles",
+        "body": "Only approved support roles should be able to open the conversations behind recurring-issue analytics.",
+        "perspective": "concern"
+      },
+      "expectation": {
+        "maxFinalScore": 0.7
+      },
+      "rationale": "This recombines existing role-based access, analytics explanation, and conversation privacy themes.",
+      "score": {
+        "finalScore": 0.1287688800932411,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.7357198479567809,
+          "novelty": 0.2642801520432191
+        },
+        "lexical": {
+          "maxSimilarity": 0.1935483870967742,
+          "novelty": 0.8064516129032258
+        },
+        "rawNovelty": 0.3456058711722201,
+        "relevance": {
+          "similarity": 0.37258880949124223,
+          "gate": 0.37258880949124223
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-040",
+            "semanticSimilarity": 0.7810594739168936,
+            "lexicalSimilarity": 0.13333333333333333
+          },
+          {
+            "submissionId": "submission-038",
+            "semanticSimilarity": 0.6884853344746308,
+            "lexicalSimilarity": 0.1935483870967742
+          },
+          {
+            "submissionId": "submission-037",
+            "semanticSimilarity": 0.605385632642554,
+            "lexicalSimilarity": 0.05714285714285714
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.7,
+          "actual": 0.1287688800932411,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-relevant-001",
+      "category": "novel_relevant",
+      "candidate": {
+        "id": "candidate-novel-relevant-001",
+        "headline": "Mark summaries stale after new replies",
+        "body": "When a customer adds messages after a summary is generated, label that summary as stale until the assistant refreshes it.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "minFinalScore": 0.15,
+        "minRawNovelty": 0.45,
+        "minRelevance": 0.35
+      },
+      "rationale": "Summary freshness is directly relevant to the announced feature and is not represented in the baseline.",
+      "score": {
+        "finalScore": 0.12719371693854978,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.5747807236341219,
+          "novelty": 0.4252192763658781
+        },
+        "lexical": {
+          "maxSimilarity": 0.16666666666666666,
+          "novelty": 0.8333333333333334
+        },
+        "rawNovelty": 0.4864363849109964,
+        "relevance": {
+          "similarity": 0.2614806804836824,
+          "gate": 0.2614806804836824
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-004",
+            "semanticSimilarity": 0.591552764694954,
+            "lexicalSimilarity": 0.08108108108108109
+          },
+          {
+            "submissionId": "submission-014",
+            "semanticSimilarity": 0.5521391008585979,
+            "lexicalSimilarity": 0.15789473684210525
+          },
+          {
+            "submissionId": "submission-016",
+            "semanticSimilarity": 0.5420733455957008,
+            "lexicalSimilarity": 0.125
+          }
+        ]
+      },
+      "passed": false,
+      "checks": [
+        {
+          "expectation": "minFinalScore",
+          "metric": "finalScore",
+          "operator": "min",
+          "expected": 0.15,
+          "actual": 0.12719371693854978,
+          "passed": false
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.45,
+          "actual": 0.4864363849109964,
+          "passed": true
+        },
+        {
+          "expectation": "minRelevance",
+          "metric": "relevance",
+          "operator": "min",
+          "expected": 0.35,
+          "actual": 0.2614806804836824,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-relevant-002",
+      "category": "novel_relevant",
+      "candidate": {
+        "id": "candidate-novel-relevant-002",
+        "headline": "Flag conflicting follow-up owners",
+        "body": "Warn an agent when separate conversations assign the same customer follow-up to different teams before creating either task.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "minFinalScore": 0.15,
+        "minRawNovelty": 0.45,
+        "minRelevance": 0.35
+      },
+      "rationale": "Cross-conversation ownership conflicts are relevant to extracted action items but absent from existing submissions.",
+      "score": {
+        "finalScore": 0.19570926788978826,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.5562277952284796,
+          "novelty": 0.44377220477152035
+        },
+        "lexical": {
+          "maxSimilarity": 0.15789473684210525,
+          "novelty": 0.8421052631578947
+        },
+        "rawNovelty": 0.5035221635294764,
+        "relevance": {
+          "similarity": 0.3886805429138401,
+          "gate": 0.3886805429138401
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-045",
+            "semanticSimilarity": 0.5975483947798506,
+            "lexicalSimilarity": 0.1
+          },
+          {
+            "submissionId": "submission-016",
+            "semanticSimilarity": 0.49765150759750826,
+            "lexicalSimilarity": 0.0975609756097561
+          },
+          {
+            "submissionId": "submission-017",
+            "semanticSimilarity": 0.48403306081316755,
+            "lexicalSimilarity": 0.075
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "minFinalScore",
+          "metric": "finalScore",
+          "operator": "min",
+          "expected": 0.15,
+          "actual": 0.19570926788978826,
+          "passed": true
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.45,
+          "actual": 0.5035221635294764,
+          "passed": true
+        },
+        {
+          "expectation": "minRelevance",
+          "metric": "relevance",
+          "operator": "min",
+          "expected": 0.35,
+          "actual": 0.3886805429138401,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-relevant-003",
+      "category": "novel_relevant",
+      "candidate": {
+        "id": "candidate-novel-relevant-003",
+        "headline": "Separate facts from unresolved questions",
+        "body": "Generated summaries should place unanswered customer questions in their own section instead of presenting them as settled facts.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "minFinalScore": 0.15,
+        "minRawNovelty": 0.45,
+        "minRelevance": 0.35
+      },
+      "rationale": "Structured treatment of unresolved questions is a new, product-specific approach to safer summaries.",
+      "score": {
+        "finalScore": 0.14464014900680128,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.4586948323430805,
+          "novelty": 0.5413051676569195
+        },
+        "lexical": {
+          "maxSimilarity": 0.10526315789473684,
+          "novelty": 0.8947368421052632
+        },
+        "rawNovelty": 0.594319918824171,
+        "relevance": {
+          "similarity": 0.24337085873373349,
+          "gate": 0.24337085873373349
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-004",
+            "semanticSimilarity": 0.4612330995202817,
+            "lexicalSimilarity": 0.02631578947368421
+          },
+          {
+            "submissionId": "submission-032",
+            "semanticSimilarity": 0.4552175071600312,
+            "lexicalSimilarity": 0.08108108108108109
+          },
+          {
+            "submissionId": "submission-013",
+            "semanticSimilarity": 0.4538972048290206,
+            "lexicalSimilarity": 0.05405405405405406
+          }
+        ]
+      },
+      "passed": false,
+      "checks": [
+        {
+          "expectation": "minFinalScore",
+          "metric": "finalScore",
+          "operator": "min",
+          "expected": 0.15,
+          "actual": 0.14464014900680128,
+          "passed": false
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.45,
+          "actual": 0.594319918824171,
+          "passed": true
+        },
+        {
+          "expectation": "minRelevance",
+          "metric": "relevance",
+          "operator": "min",
+          "expected": 0.35,
+          "actual": 0.24337085873373349,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-relevant-004",
+      "category": "novel_relevant",
+      "candidate": {
+        "id": "candidate-novel-relevant-004",
+        "headline": "Exclude bot storms from issue trends",
+        "body": "Recurring-issue analytics should identify automated retry storms so one malfunctioning bot does not look like widespread customer demand.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "minFinalScore": 0.15,
+        "minRawNovelty": 0.45,
+        "minRelevance": 0.35
+      },
+      "rationale": "Bot-driven distortion is a novel analytics failure mode while remaining specific to recurring support issues.",
+      "score": {
+        "finalScore": 0.17440351940248974,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.5080906115466035,
+          "novelty": 0.4919093884533965
+        },
+        "lexical": {
+          "maxSimilarity": 0.16666666666666666,
+          "novelty": 0.8333333333333334
+        },
+        "rawNovelty": 0.543122980185387,
+        "relevance": {
+          "similarity": 0.32111239215648674,
+          "gate": 0.32111239215648674
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-040",
+            "semanticSimilarity": 0.5136586308212673,
+            "lexicalSimilarity": 0.05555555555555555
+          },
+          {
+            "submissionId": "submission-037",
+            "semanticSimilarity": 0.5049144227838235,
+            "lexicalSimilarity": 0.05128205128205128
+          },
+          {
+            "submissionId": "submission-038",
+            "semanticSimilarity": 0.4842110621869604,
+            "lexicalSimilarity": 0.1388888888888889
+          }
+        ]
+      },
+      "passed": false,
+      "checks": [
+        {
+          "expectation": "minFinalScore",
+          "metric": "finalScore",
+          "operator": "min",
+          "expected": 0.15,
+          "actual": 0.17440351940248974,
+          "passed": true
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.45,
+          "actual": 0.543122980185387,
+          "passed": true
+        },
+        {
+          "expectation": "minRelevance",
+          "metric": "relevance",
+          "operator": "min",
+          "expected": 0.35,
+          "actual": 0.32111239215648674,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-relevant-005",
+      "category": "novel_relevant",
+      "candidate": {
+        "id": "candidate-novel-relevant-005",
+        "headline": "Preview workflow effects with replay",
+        "body": "Before enabling an automation rule, let administrators replay historical conversations to see which summaries and tasks it would have produced.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "minFinalScore": 0.15,
+        "minRawNovelty": 0.45,
+        "minRelevance": 0.35
+      },
+      "rationale": "Historical workflow replay is a new safety mechanism tied directly to summaries, action items, and admin rollout.",
+      "score": {
+        "finalScore": 0.1553041463563739,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.605985159371839,
+          "novelty": 0.39401484062816095
+        },
+        "lexical": {
+          "maxSimilarity": 0.10810810810810811,
+          "novelty": 0.8918918918918919
+        },
+        "rawNovelty": 0.4686963983177206,
+        "relevance": {
+          "similarity": 0.3313534025731858,
+          "gate": 0.3313534025731858
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-003",
+            "semanticSimilarity": 0.6216493906798436,
+            "lexicalSimilarity": 0.04878048780487805
+          },
+          {
+            "submissionId": "submission-020",
+            "semanticSimilarity": 0.5921061237564129,
+            "lexicalSimilarity": 0.05128205128205128
+          },
+          {
+            "submissionId": "submission-023",
+            "semanticSimilarity": 0.5536368783700885,
+            "lexicalSimilarity": 0.05
+          }
+        ]
+      },
+      "passed": false,
+      "checks": [
+        {
+          "expectation": "minFinalScore",
+          "metric": "finalScore",
+          "operator": "min",
+          "expected": 0.15,
+          "actual": 0.1553041463563739,
+          "passed": true
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.45,
+          "actual": 0.4686963983177206,
+          "passed": true
+        },
+        {
+          "expectation": "minRelevance",
+          "metric": "relevance",
+          "operator": "min",
+          "expected": 0.35,
+          "actual": 0.3313534025731858,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-irrelevant-001",
+      "category": "novel_irrelevant",
+      "candidate": {
+        "id": "candidate-novel-irrelevant-001",
+        "headline": "Expand aerodynamic testing",
+        "body": "Formula One teams finishing last should receive more wind-tunnel time before the next racing season.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.25,
+        "minRawNovelty": 0.55,
+        "maxRelevance": 0.35
+      },
+      "rationale": "Motorsport regulation is unlike the baseline and unrelated to AI-assisted customer support.",
+      "score": {
+        "finalScore": 0.059369118449778664,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.30070631159368055,
+          "novelty": 0.6992936884063194
+        },
+        "lexical": {
+          "maxSimilarity": 0.09090909090909091,
+          "novelty": 0.9090909090909091
+        },
+        "rawNovelty": 0.7307632715090079,
+        "relevance": {
+          "similarity": 0.08124261407826767,
+          "gate": 0.08124261407826767
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-004",
+            "semanticSimilarity": 0.30905768990984145,
+            "lexicalSimilarity": 0.08823529411764706
+          },
+          {
+            "submissionId": "submission-001",
+            "semanticSimilarity": 0.2981566211750358,
+            "lexicalSimilarity": 0.09090909090909091
+          },
+          {
+            "submissionId": "submission-049",
+            "semanticSimilarity": 0.2582471129526493,
+            "lexicalSimilarity": 0.025
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.25,
+          "actual": 0.059369118449778664,
+          "passed": true
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.55,
+          "actual": 0.7307632715090079,
+          "passed": true
+        },
+        {
+          "expectation": "maxRelevance",
+          "metric": "relevance",
+          "operator": "max",
+          "expected": 0.35,
+          "actual": 0.08124261407826767,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-irrelevant-002",
+      "category": "novel_irrelevant",
+      "candidate": {
+        "id": "candidate-novel-irrelevant-002",
+        "headline": "Plant tomatoes beside basil",
+        "body": "Home gardeners can use companion planting and deep watering to improve vegetable yields during summer.",
+        "perspective": "observation"
+      },
+      "expectation": {
+        "maxFinalScore": 0.25,
+        "minRawNovelty": 0.55,
+        "maxRelevance": 0.35
+      },
+      "rationale": "Gardening advice should be novel relative to the baseline but irrelevant to the product announcement.",
+      "score": {
+        "finalScore": 0.015379669540896306,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.13641400602098708,
+          "novelty": 0.8635859939790129
+        },
+        "lexical": {
+          "maxSimilarity": 0.08333333333333333,
+          "novelty": 0.9166666666666666
+        },
+        "rawNovelty": 0.8715480948821609,
+        "relevance": {
+          "similarity": 0.017646380769125242,
+          "gate": 0.017646380769125242
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-049",
+            "semanticSimilarity": 0.14210501753357316,
+            "lexicalSimilarity": 0.05128205128205128
+          },
+          {
+            "submissionId": "submission-034",
+            "semanticSimilarity": 0.13290796741763894,
+            "lexicalSimilarity": 0
+          },
+          {
+            "submissionId": "submission-037",
+            "semanticSimilarity": 0.11278605275551488,
+            "lexicalSimilarity": 0.02702702702702703
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.25,
+          "actual": 0.015379669540896306,
+          "passed": true
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.55,
+          "actual": 0.8715480948821609,
+          "passed": true
+        },
+        {
+          "expectation": "maxRelevance",
+          "metric": "relevance",
+          "operator": "max",
+          "expected": 0.35,
+          "actual": 0.017646380769125242,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-irrelevant-003",
+      "category": "novel_irrelevant",
+      "candidate": {
+        "id": "candidate-novel-irrelevant-003",
+        "headline": "Rest bread dough overnight",
+        "body": "A slow refrigerator fermentation can deepen flavor and create a more open crumb in a homemade loaf.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.25,
+        "minRawNovelty": 0.55,
+        "maxRelevance": 0.35
+      },
+      "rationale": "Bread making has high topical novelty but no relationship to support summaries or workflows.",
+      "score": {
+        "finalScore": 0,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.19077893828451967,
+          "novelty": 0.8092210617154804
+        },
+        "lexical": {
+          "maxSimilarity": 0.08823529411764706,
+          "novelty": 0.9117647058823529
+        },
+        "rawNovelty": 0.8246026083405111,
+        "relevance": {
+          "similarity": 0,
+          "gate": 0
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-049",
+            "semanticSimilarity": 0.19864158229242307,
+            "lexicalSimilarity": 0
+          },
+          {
+            "submissionId": "submission-021",
+            "semanticSimilarity": 0.18123626110716273,
+            "lexicalSimilarity": 0
+          },
+          {
+            "submissionId": "submission-002",
+            "semanticSimilarity": 0.17223110576917003,
+            "lexicalSimilarity": 0
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.25,
+          "actual": 0,
+          "passed": true
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.55,
+          "actual": 0.8246026083405111,
+          "passed": true
+        },
+        {
+          "expectation": "maxRelevance",
+          "metric": "relevance",
+          "operator": "max",
+          "expected": 0.35,
+          "actual": 0,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-irrelevant-004",
+      "category": "novel_irrelevant",
+      "candidate": {
+        "id": "candidate-novel-irrelevant-004",
+        "headline": "Map dark-sky observation sites",
+        "body": "Amateur astronomers need a map combining cloud forecasts, moonlight, and local light pollution for telescope trips.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.25,
+        "minRawNovelty": 0.55,
+        "maxRelevance": 0.35
+      },
+      "rationale": "Astronomy trip planning is intentionally unrelated despite being a coherent and potentially useful idea.",
+      "score": {
+        "finalScore": 0.05808336964661927,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.16688715104455307,
+          "novelty": 0.8331128489554469
+        },
+        "lexical": {
+          "maxSimilarity": 0.08333333333333333,
+          "novelty": 0.9166666666666666
+        },
+        "rawNovelty": 0.8456459216121298,
+        "relevance": {
+          "similarity": 0.06868521228824682,
+          "gate": 0.06868521228824682
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-006",
+            "semanticSimilarity": 0.1741252097830186,
+            "lexicalSimilarity": 0.05263157894736842
+          },
+          {
+            "submissionId": "submission-046",
+            "semanticSimilarity": 0.15928492290213242,
+            "lexicalSimilarity": 0
+          },
+          {
+            "submissionId": "submission-039",
+            "semanticSimilarity": 0.14626548304102144,
+            "lexicalSimilarity": 0.02564102564102564
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.25,
+          "actual": 0.05808336964661927,
+          "passed": true
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.55,
+          "actual": 0.8456459216121298,
+          "passed": true
+        },
+        {
+          "expectation": "maxRelevance",
+          "metric": "relevance",
+          "operator": "max",
+          "expected": 0.35,
+          "actual": 0.06868521228824682,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-novel-irrelevant-005",
+      "category": "novel_irrelevant",
+      "candidate": {
+        "id": "candidate-novel-irrelevant-005",
+        "headline": "Repair erosion on hiking trails",
+        "body": "Trail crews should add drainage bars and native ground cover where heavy rain repeatedly washes away soil.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.25,
+        "minRawNovelty": 0.55,
+        "maxRelevance": 0.35
+      },
+      "rationale": "Trail maintenance is distant from every announced product capability and should be suppressed by relevance.",
+      "score": {
+        "finalScore": 0.05628325232391924,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.2185679870327252,
+          "novelty": 0.7814320129672748
+        },
+        "lexical": {
+          "maxSimilarity": 0.05263157894736842,
+          "novelty": 0.9473684210526316
+        },
+        "rawNovelty": 0.8063224741800783,
+        "relevance": {
+          "similarity": 0.06980241048242113,
+          "gate": 0.06980241048242113
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-021",
+            "semanticSimilarity": 0.23945623039969943,
+            "lexicalSimilarity": 0
+          },
+          {
+            "submissionId": "submission-020",
+            "semanticSimilarity": 0.19109393091021154,
+            "lexicalSimilarity": 0.02631578947368421
+          },
+          {
+            "submissionId": "submission-022",
+            "semanticSimilarity": 0.17566069519842054,
+            "lexicalSimilarity": 0
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.25,
+          "actual": 0.05628325232391924,
+          "passed": true
+        },
+        {
+          "expectation": "minRawNovelty",
+          "metric": "rawNovelty",
+          "operator": "min",
+          "expected": 0.55,
+          "actual": 0.8063224741800783,
+          "passed": true
+        },
+        {
+          "expectation": "maxRelevance",
+          "metric": "relevance",
+          "operator": "max",
+          "expected": 0.35,
+          "actual": 0.06980241048242113,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-borderline-001",
+      "category": "borderline",
+      "candidate": {
+        "id": "candidate-borderline-001",
+        "headline": "Explain personal-data processing",
+        "body": "AI products should clearly tell people how their personal information is collected, transformed, and removed.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.55,
+        "minRelevance": 0.25,
+        "maxRelevance": 0.65
+      },
+      "rationale": "The statement concerns AI and privacy but does not engage directly with support summaries or this product's workflows.",
+      "score": {
+        "finalScore": 0.16012853349119788,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.6332741834715268,
+          "novelty": 0.36672581652847325
+        },
+        "lexical": {
+          "maxSimilarity": 0.12121212121212122,
+          "novelty": 0.8787878787878788
+        },
+        "rawNovelty": 0.4435351258673841,
+        "relevance": {
+          "similarity": 0.3610278513523547,
+          "gate": 0.3610278513523547
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-029",
+            "semanticSimilarity": 0.6383748431859743,
+            "lexicalSimilarity": 0.08571428571428572
+          },
+          {
+            "submissionId": "submission-005",
+            "semanticSimilarity": 0.6284520431227311,
+            "lexicalSimilarity": 0.12121212121212122
+          },
+          {
+            "submissionId": "submission-006",
+            "semanticSimilarity": 0.6171366462312275,
+            "lexicalSimilarity": 0.08571428571428572
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.55,
+          "actual": 0.16012853349119788,
+          "passed": true
+        },
+        {
+          "expectation": "minRelevance",
+          "metric": "relevance",
+          "operator": "min",
+          "expected": 0.25,
+          "actual": 0.3610278513523547,
+          "passed": true
+        },
+        {
+          "expectation": "maxRelevance",
+          "metric": "relevance",
+          "operator": "max",
+          "expected": 0.65,
+          "actual": 0.3610278513523547,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-borderline-002",
+      "category": "borderline",
+      "candidate": {
+        "id": "candidate-borderline-002",
+        "headline": "Train employees before AI rollout",
+        "body": "Organizations introducing AI tools should teach staff how to question outputs and report unexpected behavior.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.55,
+        "minRelevance": 0.25,
+        "maxRelevance": 0.65
+      },
+      "rationale": "Generic AI literacy is adjacent to human review but is not specific to the announced support assistant.",
+      "score": {
+        "finalScore": 0.25185039051372116,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.5390004298067085,
+          "novelty": 0.4609995701932915
+        },
+        "lexical": {
+          "maxSimilarity": 0.11764705882352941,
+          "novelty": 0.8823529411764706
+        },
+        "rawNovelty": 0.5242025758407683,
+        "relevance": {
+          "similarity": 0.48044477864264284,
+          "gate": 0.48044477864264284
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-017",
+            "semanticSimilarity": 0.5460280711096791,
+            "lexicalSimilarity": 0.1111111111111111
+          },
+          {
+            "submissionId": "submission-029",
+            "semanticSimilarity": 0.5369813825659907,
+            "lexicalSimilarity": 0.02631578947368421
+          },
+          {
+            "submissionId": "submission-019",
+            "semanticSimilarity": 0.5028917237110372,
+            "lexicalSimilarity": 0.05714285714285714
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.55,
+          "actual": 0.25185039051372116,
+          "passed": true
+        },
+        {
+          "expectation": "minRelevance",
+          "metric": "relevance",
+          "operator": "min",
+          "expected": 0.25,
+          "actual": 0.48044477864264284,
+          "passed": true
+        },
+        {
+          "expectation": "maxRelevance",
+          "metric": "relevance",
+          "operator": "max",
+          "expected": 0.65,
+          "actual": 0.48044477864264284,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "eval-borderline-003",
+      "category": "borderline",
+      "candidate": {
+        "id": "candidate-borderline-003",
+        "headline": "Report the energy cost of AI",
+        "body": "Software companies should publish how much electricity their AI features consume and how those estimates are calculated.",
+        "perspective": "suggestion"
+      },
+      "expectation": {
+        "maxFinalScore": 0.55,
+        "minRelevance": 0.2,
+        "maxRelevance": 0.6
+      },
+      "rationale": "AI sustainability relates to the technology in general but only weakly to the specific customer-support announcement.",
+      "score": {
+        "finalScore": 0.17361377278160392,
+        "semantic": {
+          "topK": 3,
+          "aggregatedSimilarity": 0.42601930364501706,
+          "novelty": 0.5739806963549829
+        },
+        "lexical": {
+          "maxSimilarity": 0.11428571428571428,
+          "novelty": 0.8857142857142857
+        },
+        "rawNovelty": 0.6207407347588783,
+        "relevance": {
+          "similarity": 0.2796880614723034,
+          "gate": 0.2796880614723034
+        },
+        "nearestNeighbors": [
+          {
+            "submissionId": "submission-029",
+            "semanticSimilarity": 0.4495865208389573,
+            "lexicalSimilarity": 0.025
+          },
+          {
+            "submissionId": "submission-017",
+            "semanticSimilarity": 0.39189760250521305,
+            "lexicalSimilarity": 0.05
+          },
+          {
+            "submissionId": "submission-035",
+            "semanticSimilarity": 0.38698110390078694,
+            "lexicalSimilarity": 0.024390243902439025
+          }
+        ]
+      },
+      "passed": true,
+      "checks": [
+        {
+          "expectation": "maxFinalScore",
+          "metric": "finalScore",
+          "operator": "max",
+          "expected": 0.55,
+          "actual": 0.17361377278160392,
+          "passed": true
+        },
+        {
+          "expectation": "minRelevance",
+          "metric": "relevance",
+          "operator": "min",
+          "expected": 0.2,
+          "actual": 0.2796880614723034,
+          "passed": true
+        },
+        {
+          "expectation": "maxRelevance",
+          "metric": "relevance",
+          "operator": "max",
+          "expected": 0.6,
+          "actual": 0.2796880614723034,
+          "passed": true
+        }
+      ]
+    }
+  ]
+}
