@@ -79,13 +79,25 @@ describe("score CLI output", () => {
           submissionId: baseline.id,
           semanticSimilarity: 0.6,
           lexicalSimilarity: 0.2,
-          semanticAggregationWeight: 1,
-          semanticSimilarityContribution: 0.6,
+          semanticAggregationWeight: 0.75,
+          semanticSimilarityContribution: 0.45,
+        },
+        {
+          rank: 2,
+          submissionId: "announcement-001",
+          semanticSimilarity: 0.4,
+          lexicalSimilarity: 0.1,
+          semanticAggregationWeight: 0.25,
+          semanticSimilarityContribution: 0.1,
         },
       ],
     };
 
-    const output = formatScoreResult(candidate, score, [baseline]);
+    const output = formatScoreResult(candidate, score, [baseline], {
+      id: "announcement-001",
+      title: "Assist AI launch",
+      body: "Source announcement.",
+    });
 
     for (const label of [
       "finalScore",
@@ -94,8 +106,9 @@ describe("score CLI output", () => {
       "lexicalNovelty",
       "relevance",
       "relevanceGate",
-      "Top-1 nearest submissions",
+      "Top-2 nearest submissions",
       "submission-001 - A neighbor",
+      "announcement-001 - Fixed content: Assist AI launch",
     ]) {
       expect(output).toContain(label);
     }

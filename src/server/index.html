@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Novelty Evaluator</title>
+<style>
+  body { font: 15px/1.5 system-ui, sans-serif; max-width: 760px; margin: 24px auto; padding: 0 16px; color: #1d1d1f; }
+  h1 { font-size: 20px; margin: 0 0 16px; }
+  label { display: block; font-weight: 600; margin: 12px 0 4px; }
+  input, textarea, select { width: 100%; box-sizing: border-box; font: inherit; padding: 6px 8px; border: 1px solid #bbb; border-radius: 4px; }
+  textarea { min-height: 90px; resize: vertical; }
+  select { width: auto; }
+  button { font: inherit; padding: 6px 12px; border: 1px solid #888; border-radius: 4px; background: #f4f4f4; cursor: pointer; }
+  button:disabled { opacity: 0.5; cursor: default; }
+  #evaluate { margin-top: 14px; background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
+  .presets { display: flex; flex-wrap: wrap; gap: 8px; }
+  .muted { color: #666; font-size: 13px; }
+  .error { color: #b00020; white-space: pre-wrap; }
+  table { border-collapse: collapse; width: 100%; margin-top: 8px; }
+  th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid #e3e3e3; vertical-align: top; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .final td { font-weight: 700; font-size: 17px; }
+  section { margin-top: 24px; }
+  #baseline-section { margin: 0 0 20px; }
+  #baseline-panel { max-height: 420px; overflow: auto; border: 1px solid #e3e3e3; border-radius: 4px; margin-top: 8px; }
+  #baseline-panel table { margin-top: 0; font-size: 14px; }
+  #baseline-panel th { position: sticky; top: 0; background: #fafafa; }
+  tr.match td { background: #fff6d6; }
+  .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+  .toolbar .spacer { flex: 1; }
+  #add-form { display: grid; grid-template-columns: 110px 1fr 2fr auto auto; gap: 6px; margin-top: 10px; }
+  #add-form input, #add-form select { width: 100%; }
+  @media (max-width: 640px) { #add-form { grid-template-columns: 1fr; } }
+  td button { padding: 2px 8px; font-size: 13px; }
+  th.select, td.select { width: 1%; }
+  #baseline-panel input[type="checkbox"] { width: auto; margin: 0; }
+  tr.selected td { background: #eef4ff; }
+</style>
+</head>
+<body>
+<h1>Novelty Evaluator</h1>
+
+<div id="baseline-section">
+  <button id="baseline-toggle" type="button" aria-expanded="false" aria-controls="baseline-tools">Show baseline submissions</button>
+  <span class="muted">The existing submissions every candidate is compared against.</span>
+  <div id="baseline-tools" hidden>
+    <div class="toolbar">
+      <span id="baseline-status" class="muted"></span>
+      <span class="spacer"></span>
+      <button id="upload-button" type="button" title="Replace the whole set with a .json array or a .csv with id,headline,body,perspective columns">Upload JSON / CSV</button>
+      <input id="upload-file" type="file" accept=".json,.csv,application/json,text/csv" hidden>
+      <button id="download-button" type="button">Download JSON</button>
+      <button id="reset-button" type="button">Reset to original</button>
+      <button id="remove-selected" type="button" disabled>Remove selected (0)</button>
+    </div>
+    <form id="add-form">
+      <input id="add-id" placeholder="ID (optional)" aria-label="New submission ID">
+      <input id="add-headline" placeholder="Headline" aria-label="New submission headline" required>
+      <input id="add-body" placeholder="Body" aria-label="New submission body" required>
+      <select id="add-perspective" aria-label="New submission perspective"></select>
+      <button type="submit">Add</button>
+    </form>
+    <p id="baseline-error" class="error"></p>
+    <div id="baseline-panel">
+      <table>
+        <thead><tr><th class="select"><input id="select-all" type="checkbox" aria-label="Select all baseline submissions"></th><th>ID</th><th>Perspective</th><th>Headline</th><th>Body</th><th></th></tr></thead>
+        <tbody id="baselines"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="presets" id="presets"><span class="muted">Loading presets…</span></div>
+
+<form id="form">
+  <label for="headline">Headline</label>
+  <input id="headline" required>
+  <label for="body">Body</label>
+  <textarea id="body" required></textarea>
+  <div class="muted">English only. Body needs at least 5 words; headline and body together at most 100 words.</div>
+  <label for="perspective">Perspective</label>
+  <select id="perspective"></select>
+  <div><button id="evaluate" type="submit">Evaluate</button></div>
+</form>
+
+<section id="output" hidden>
+  <p id="error" class="error"></p>
+  <div id="results" hidden>
+    <table>
+      <tbody id="metrics"></tbody>
+    </table>
+    <h2 style="font-size:16px;margin:20px 0 0">Top-3 nearest baseline submissions</h2>
+    <table>
+      <thead><tr><th>#</th><th>Submission</th><th class="num">Semantic</th><th class="num">Lexical</th></tr></thead>
+      <tbody id="neighbors"></tbody>
+    </table>
+  </div>
+</section>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  const fmt = (n) => n.toFixed(3);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+  let currentBaselines = [];
+  let baselinesAreOriginal = true;
+  const selectedIds = new Set();
+
+  function updateSelectionUi() {
+    const count = selectedIds.size;
+    $("remove-selected").textContent = `Remove selected (${count})`;
+    $("remove-selected").disabled = count === 0;
+    $("select-all").checked = count > 0 && count === currentBaselines.length;
+    $("select-all").indeterminate = count > 0 && count < currentBaselines.length;
+    for (const row of $("baselines").rows) row.classList.toggle("selected", selectedIds.has(row.dataset.id));
+  }
+
+  async function api(path, options = {}) {
+    const res = await fetch(path, {
+      ...options,
+      headers: options.body ? { "Content-Type": "application/json" } : undefined,
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error ?? `HTTP ${res.status}`);
+    return data;
+  }
+
+  function renderBaselines({ baselines, fingerprint, isOriginal }) {
+    currentBaselines = baselines;
+    baselinesAreOriginal = isOriginal;
+    // Keep selections that still exist in the new set.
+    const ids = new Set(baselines.map((b) => b.id));
+    for (const id of [...selectedIds]) if (!ids.has(id)) selectedIds.delete(id);
+    const open = $("baseline-toggle").getAttribute("aria-expanded") === "true";
+    $("baseline-toggle").textContent = `${open ? "Hide" : "Show"} baseline submissions (${baselines.length})`;
+    $("baseline-status").textContent = isOriginal
+      ? "Original set from data/submissions.json"
+      : `Modified set (fingerprint ${fingerprint}), kept in memory until reset or server restart`;
+    $("reset-button").disabled = isOriginal;
+    $("baselines").innerHTML = baselines.map((b) =>
+      `<tr data-id="${esc(b.id)}"><td class="select"><input type="checkbox" data-select="${esc(b.id)}" aria-label="Select ${esc(b.id)}"${selectedIds.has(b.id) ? " checked" : ""}></td><td>${esc(b.id)}</td><td>${esc(b.perspective)}</td><td>${esc(b.headline)}</td><td>${esc(b.body)}</td>` +
+      `<td><button type="button" data-remove="${esc(b.id)}" title="Remove ${esc(b.id)}">Remove</button></td></tr>`
+    ).join("");
+    updateSelectionUi();
+  }
+
+  // Applies a baseline edit; an earlier score no longer reflects the comparison set.
+  async function changeBaselines(path, options) {
+    const buttons = [...$("baseline-tools").querySelectorAll("button")];
+    $("baseline-error").textContent = "";
+    for (const button of buttons) button.disabled = true;
+    try {
+      renderBaselines(await api(path, options));
+      if (!$("results").hidden) {
+        $("results").hidden = true;
+        $("error").textContent = "Baselines changed. Evaluate again to score against the new set.";
+      }
+      return true;
+    } catch (error) {
+      $("baseline-error").textContent = error.message;
+      return false;
+    } finally {
+      for (const button of $("baseline-tools").querySelectorAll("button")) button.disabled = false;
+      $("reset-button").disabled = baselinesAreOriginal;
+      updateSelectionUi();
+    }
+  }
+
+  async function init() {
+    const [{ perspectives, presets }, baselineState] = await Promise.all([
+      api("/api/presets"),
+      api("/api/baselines"),
+    ]);
+    renderBaselines(baselineState);
+    const options = perspectives.map((p) => `<option>${esc(p)}</option>`).join("");
+    $("perspective").innerHTML = options;
+    $("add-perspective").innerHTML = options;
+    $("presets").innerHTML = "";
+    for (const preset of presets) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = preset.label;
+      button.title = preset.caseId;
+      button.onclick = () => {
+        $("headline").value = preset.headline;
+        $("body").value = preset.body;
+        $("perspective").value = preset.perspective;
+        evaluate();
+      };
+      $("presets").append(button);
+    }
+  }
+
+  async function evaluate() {
+    const button = $("evaluate");
+    button.disabled = true;
+    button.textContent = "Evaluating…";
+    $("output").hidden = false;
+    $("error").textContent = "";
+    try {
+      const res = await fetch("/api/score", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          headline: $("headline").value,
+          body: $("body").value,
+          perspective: $("perspective").value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? `HTTP ${res.status}`);
+      render(data);
+    } catch (error) {
+      $("results").hidden = true;
+      $("error").textContent = error.message;
+    } finally {
+      button.disabled = false;
+      button.textContent = "Evaluate";
+    }
+  }
+
+  function render(r) {
+    const rows = [
+      ["Final score", r.finalScore, "final"],
+      ["Raw novelty", r.rawNovelty],
+      ["Semantic novelty", r.semantic.novelty],
+      ["Lexical novelty", r.lexical.novelty],
+      ["Relevance similarity", r.relevance.similarity, "", `gate ramps ${r.relevance.low} → ${r.relevance.high}`],
+      ["Relevance gate", r.relevance.gate],
+    ];
+    $("metrics").innerHTML = rows.map(([label, value, cls = "", note = ""]) =>
+      `<tr class="${cls}"><td>${label}</td><td class="num">${fmt(value)}</td><td class="muted">${esc(note)}</td></tr>`
+    ).join("");
+    $("neighbors").innerHTML = r.nearestNeighbors.map((n) =>
+      `<tr><td>${n.rank}</td><td>${esc(n.headline ?? "")}<div class="muted">${esc(n.submissionId)}</div></td>` +
+      `<td class="num">${fmt(n.semanticSimilarity)}</td><td class="num">${fmt(n.lexicalSimilarity)}</td></tr>`
+    ).join("");
+    $("results").hidden = false;
+    // Highlight the top-3 matches in the baseline table.
+    const nearest = new Set(r.nearestNeighbors.map((n) => n.submissionId));
+    for (const row of $("baselines").rows) row.classList.toggle("match", nearest.has(row.dataset.id));
+  }
+
+  $("baseline-toggle").addEventListener("click", () => {
+    const button = $("baseline-toggle");
+    const open = button.getAttribute("aria-expanded") !== "true";
+    button.setAttribute("aria-expanded", String(open));
+    button.textContent = button.textContent.replace(open ? "Show" : "Hide", open ? "Hide" : "Show");
+    $("baseline-tools").hidden = !open;
+  });
+
+  $("baselines").addEventListener("click", (event) => {
+    const id = event.target.dataset?.remove;
+    if (id) changeBaselines(`/api/baselines/${encodeURIComponent(id)}`, { method: "DELETE" });
+  });
+
+  $("baselines").addEventListener("change", (event) => {
+    const id = event.target.dataset?.select;
+    if (id === undefined) return;
+    if (event.target.checked) selectedIds.add(id); else selectedIds.delete(id);
+    updateSelectionUi();
+  });
+
+  $("select-all").addEventListener("change", () => {
+    selectedIds.clear();
+    if ($("select-all").checked) for (const b of currentBaselines) selectedIds.add(b.id);
+    for (const box of $("baselines").querySelectorAll("input[data-select]")) box.checked = $("select-all").checked;
+    updateSelectionUi();
+  });
+
+  $("remove-selected").addEventListener("click", () => {
+    const ids = [...selectedIds];
+    if (ids.length === 0 || !confirm(`Remove ${ids.length} selected baseline submission${ids.length === 1 ? "" : "s"}?`)) return;
+    changeBaselines("/api/baselines/remove", { method: "POST", body: JSON.stringify({ ids }) });
+  });
+
+  $("add-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const added = await changeBaselines("/api/baselines", {
+      method: "POST",
+      body: JSON.stringify({
+        id: $("add-id").value,
+        headline: $("add-headline").value,
+        body: $("add-body").value,
+        perspective: $("add-perspective").value,
+      }),
+    });
+    if (added) {
+      $("add-form").reset();
+      $("baseline-panel").scrollTop = $("baseline-panel").scrollHeight;
+    }
+  });
+
+  $("upload-button").addEventListener("click", () => $("upload-file").click());
+  $("upload-file").addEventListener("change", async () => {
+    const file = $("upload-file").files[0];
+    $("upload-file").value = "";
+    if (!file) return;
+    const format = file.name.toLowerCase().endsWith(".csv") ? "csv" : "json";
+    if (!confirm(`Replace all ${currentBaselines.length} baseline submissions with the contents of ${file.name}?`)) return;
+    changeBaselines("/api/baselines", {
+      method: "PUT",
+      body: JSON.stringify({ format, content: await file.text() }),
+    });
+  });
+
+  $("reset-button").addEventListener("click", () => {
+    if (confirm("Restore the original baseline set from data/submissions.json?")) {
+      changeBaselines("/api/baselines/reset", { method: "POST" });
+    }
+  });
+
+  $("download-button").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(currentBaselines, null, 2)], { type: "application/json" });
+    const link = Object.assign(document.createElement("a"), {
+      href: URL.createObjectURL(blob),
+      download: "baseline-submissions.json",
+    });
+    link.click();
+    URL.revokeObjectURL(link.href);
+  });
+
+  $("form").addEventListener("submit", (event) => { event.preventDefault(); evaluate(); });
+  init().catch((error) => { $("presets").innerHTML = `<span class="error">${esc(error.message)}</span>`; });
+</script>
+</body>
+</html>

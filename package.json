@@ -5,6 +5,7 @@
   "description": "An explainable novelty-scoring system for structured submissions.",
   "type": "module",
   "scripts": {
+    "dev": "tsx src/server/dev-server.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",

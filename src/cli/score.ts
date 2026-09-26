@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { relative, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
 import { ZodError, type ZodType } from "zod";
@@ -7,7 +7,8 @@ import { ZodError, type ZodType } from "zod";
 import { LocalEmbeddingProvider } from "../embeddings/local-embedding-provider.js";
 import { DEMO_CASE_IDS } from "../evaluation/markdown.js";
 import { EVALUATION_SCORING_CONFIG } from "../evaluation/config.js";
-import { NoveltyScorer } from "../scoring/novelty-scorer.js";
+import { appendScoreLog, DEFAULT_SCORE_LOG_PATH } from "../io/score-log.js";
+import { neighborHeadlines, NoveltyScorer } from "../scoring/novelty-scorer.js";
 import {
   fixedContentSchema,
   type FixedContent,
@@ -73,7 +74,7 @@ const parseJson = (text: string, label: string): unknown => {
   }
 };
 
-const readJsonFile = async (filePath: string, label: string): Promise<unknown> => {
+export const readJsonFile = async (filePath: string, label: string): Promise<unknown> => {
   let text: string;
   try {
     text = await readFile(filePath, "utf8");
@@ -85,7 +86,7 @@ const readJsonFile = async (filePath: string, label: string): Promise<unknown> =
   return parseJson(text, label);
 };
 
-const parseWithContext = <T>(
+export const parseWithContext = <T>(
   schema: ZodType<T>,
   value: unknown,
   label: string,
@@ -109,7 +110,7 @@ const parseWithContext = <T>(
 
 const projectFile = (relativePath: string): string => resolve(relativePath);
 
-const loadProjectData = async (): Promise<{
+export const loadProjectData = async (): Promise<{
   fixedContent: FixedContent;
   baselines: Submission[];
 }> => {
@@ -173,10 +174,9 @@ export const formatScoreResult = (
   candidate: Submission,
   result: NoveltyScoreResult,
   baselines: readonly Submission[],
+  fixedContent: FixedContent,
 ): string => {
-  const headlines = new Map(
-    baselines.map(({ id, headline }) => [id, headline] as const),
-  );
+  const headlines = neighborHeadlines(baselines, fixedContent);
   const lines = [
     `Candidate: ${candidate.id} - ${candidate.headline}`,
     `finalScore: ${formatNumber(result.finalScore)}`,
@@ -226,7 +226,20 @@ export const runScoreCli = async (args: readonly string[]): Promise<void> => {
   );
   const result = await scorer.score(candidate, prepared);
 
-  console.log(formatScoreResult(candidate, result, projectData.baselines));
+  console.log(formatScoreResult(candidate, result, projectData.baselines, projectData.fixedContent));
+
+  try {
+    await appendScoreLog({
+      source: "cli",
+      candidate,
+      result,
+      baselines: projectData.baselines,
+    });
+    console.log(`\nRun logged to ${relative(process.cwd(), DEFAULT_SCORE_LOG_PATH)}`);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.warn(`Could not log score run: ${message}`);
+  }
 };
 
 const isMainModule =
