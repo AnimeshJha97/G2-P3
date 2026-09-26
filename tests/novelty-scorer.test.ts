@@ -134,10 +134,36 @@ describe("NoveltyScorer", () => {
     expect(result.rawNovelty).toBeLessThan(0.01);
     expect(result.relevance.gate).toBe(1);
     expect(result.nearestNeighbors).toHaveLength(3);
-    expect(result.nearestNeighbors[0]).toEqual({
+    expect(result.nearestNeighbors[0]).toMatchObject({
+      rank: 1,
       submissionId: "baseline-001",
       semanticSimilarity: 1,
       lexicalSimilarity: 1,
+    });
+    expect(
+      result.nearestNeighbors[0].semanticAggregationWeight,
+    ).toBeCloseTo(0.6);
+    expect(
+      result.nearestNeighbors[0].semanticSimilarityContribution,
+    ).toBeCloseTo(0.6);
+    expect(result.semantic.weightSum).toBeCloseTo(1);
+    expect(result.semantic.weightedSimilaritySum).toBeCloseTo(
+      result.semantic.aggregatedSimilarity,
+    );
+    expect(result.lexical.mostSimilarSubmissionId).toBe("baseline-001");
+    expect(result.rawNoveltyComponents.semanticContribution).toBeCloseTo(
+      result.semantic.novelty * testConfig.semanticWeight,
+    );
+    expect(result.rawNoveltyComponents.lexicalContribution).toBeCloseTo(
+      result.lexical.novelty * testConfig.lexicalWeight,
+    );
+    expect(
+      result.rawNoveltyComponents.semanticContribution +
+        result.rawNoveltyComponents.lexicalContribution,
+    ).toBeCloseTo(result.rawNovelty);
+    expect(result.relevance).toMatchObject({
+      low: testConfig.relevanceLow,
+      high: testConfig.relevanceHigh,
     });
   });
 

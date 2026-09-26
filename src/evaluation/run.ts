@@ -18,6 +18,7 @@ import {
   scoreEvaluationCases,
   summarizeEvaluation,
 } from "./evaluator.js";
+import { renderEvaluationMarkdown } from "./markdown.js";
 
 const projectFile = (relativePath: string): URL =>
   new URL(`../../${relativePath}`, import.meta.url);
@@ -107,7 +108,14 @@ export const runEvaluation = async (): Promise<EvaluationReport> => {
 
   const outputUrl = projectFile("evaluation/results.json");
   await mkdir(new URL("./", outputUrl), { recursive: true });
-  await writeFile(outputUrl, `${JSON.stringify(report, null, 2)}\n`, "utf8");
+  await Promise.all([
+    writeFile(outputUrl, `${JSON.stringify(report, null, 2)}\n`, "utf8"),
+    writeFile(
+      projectFile("evaluation/results.md"),
+      renderEvaluationMarkdown(report, baselines),
+      "utf8",
+    ),
+  ]);
   printSummary(report);
 
   return report;

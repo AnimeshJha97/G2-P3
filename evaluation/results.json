@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-26T05:54:47.731Z",
-  "durationMs": 548.0285,
+  "generatedAt": "2026-09-26T06:50:13.287Z",
+  "durationMs": 457.47079999999994,
   "embeddingModel": "Xenova/all-MiniLM-L6-v2",
   "config": {
     "topK": 3,
@@ -11,8 +11,8 @@
     ],
     "semanticWeight": 0.85,
     "lexicalWeight": 0.15,
-    "relevanceLow": 0,
-    "relevanceHigh": 1
+    "relevanceLow": 0.1,
+    "relevanceHigh": 0.35
   },
   "baselineCount": 50,
   "evaluationCount": 28,
@@ -30,12 +30,12 @@
       "failed": 0,
       "passRate": 1,
       "means": {
-        "finalScore": 0.03359133300523696,
+        "finalScore": 0.07727444195450052,
         "rawNovelty": 0.1291756644498254,
         "semanticNovelty": 0.15197136994097105,
         "lexicalNovelty": 0,
         "relevance": 0.2734352424336269,
-        "relevanceGate": 0.2734352424336269
+        "relevanceGate": 0.6430258584597764
       },
       "caseIds": [
         "eval-duplicate-001",
@@ -51,12 +51,12 @@
       "failed": 0,
       "passRate": 1,
       "means": {
-        "finalScore": 0.07177747998376718,
+        "finalScore": 0.16931652125817445,
         "rawNovelty": 0.23685156992260462,
         "semanticNovelty": 0.19655213427636944,
         "lexicalNovelty": 0.46521503858460383,
         "relevance": 0.3188623429869695,
-        "relevanceGate": 0.3188623429869695
+        "relevanceGate": 0.7386780330699626
       },
       "caseIds": [
         "eval-near-duplicate-001",
@@ -73,12 +73,12 @@
       "failed": 0,
       "passRate": 1,
       "means": {
-        "finalScore": 0.17296179928103037,
+        "finalScore": 0.44044551192281134,
         "rawNovelty": 0.4923522074741372,
         "semanticNovelty": 0.4276646374101603,
         "lexicalNovelty": 0.8589151045033399,
         "relevance": 0.3472118070265926,
-        "relevanceGate": 0.3472118070265926
+        "relevanceGate": 0.8866223248223937
       },
       "caseIds": [
         "eval-paraphrase-001",
@@ -95,12 +95,12 @@
       "failed": 0,
       "passRate": 1,
       "means": {
-        "finalScore": 0.13300916737854823,
+        "finalScore": 0.3292557603399142,
         "rawNovelty": 0.42870102257310433,
         "semanticNovelty": 0.36441664680606844,
         "lexicalNovelty": 0.7929791519196414,
         "relevance": 0.31713540028582476,
-        "relevanceGate": 0.31713540028582476
+        "relevanceGate": 0.7899311654837123
       },
       "caseIds": [
         "eval-common-001",
@@ -117,12 +117,12 @@
       "failed": 4,
       "passRate": 0.2,
       "means": {
-        "finalScore": 0.15945015991880057,
+        "finalScore": 0.4145316034902051,
         "rawNovelty": 0.5192195691535503,
         "semanticNovelty": 0.4592441755751751,
         "lexicalNovelty": 0.8590801327643434,
         "relevance": 0.30919957537218573,
-        "relevanceGate": 0.30919957537218573
+        "relevanceGate": 0.8058538671576707
       },
       "caseIds": [
         "eval-novel-relevant-001",
@@ -145,12 +145,12 @@
       "failed": 0,
       "passRate": 1,
       "means": {
-        "finalScore": 0.03782308199224269,
+        "finalScore": 0,
         "rawNovelty": 0.8157764741047776,
         "semanticNovelty": 0.7973291212047069,
         "lexicalNovelty": 0.9203114738718453,
         "relevance": 0.04747532352361218,
-        "relevanceGate": 0.04747532352361218
+        "relevanceGate": 0
       },
       "caseIds": [
         "eval-novel-irrelevant-001",
@@ -168,12 +168,12 @@
       "failed": 0,
       "passRate": 1,
       "means": {
-        "finalScore": 0.19519756559550763,
+        "finalScore": 0.4712988329770056,
         "rawNovelty": 0.5294928121556769,
         "semanticNovelty": 0.46723536102558255,
         "lexicalNovelty": 0.8822850352262117,
         "relevance": 0.3737202304891003,
-        "relevanceGate": 0.3737202304891003
+        "relevanceGate": 0.9062507486297379
       },
       "caseIds": [
         "eval-borderline-001",
@@ -200,36 +200,56 @@
       },
       "rationale": "Summary freshness is directly relevant to the announced feature and is not represented in the baseline.",
       "score": {
-        "finalScore": 0.12719371693854978,
+        "finalScore": 0.3142003137898006,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.5747807236341218,
           "aggregatedSimilarity": 0.5747807236341219,
           "novelty": 0.4252192763658781
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-006",
           "maxSimilarity": 0.16666666666666666,
           "novelty": 0.8333333333333334
         },
         "rawNovelty": 0.4864363849109964,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.3614363849109964,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.125
+        },
         "relevance": {
           "similarity": 0.2614806804836824,
-          "gate": 0.2614806804836824
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.6459227219347297
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-004",
             "semanticSimilarity": 0.591552764694954,
-            "lexicalSimilarity": 0.08108108108108109
+            "lexicalSimilarity": 0.08108108108108109,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3549316588169724
           },
           {
+            "rank": 2,
             "submissionId": "submission-014",
             "semanticSimilarity": 0.5521391008585979,
-            "lexicalSimilarity": 0.15789473684210525
+            "lexicalSimilarity": 0.15789473684210525,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.1656417302575794
           },
           {
+            "rank": 3,
             "submissionId": "submission-016",
             "semanticSimilarity": 0.5420733455957008,
-            "lexicalSimilarity": 0.125
+            "lexicalSimilarity": 0.125,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.05420733455957009
           }
         ]
       },
@@ -240,8 +260,8 @@
           "metric": "finalScore",
           "operator": "min",
           "expected": 0.15,
-          "actual": 0.12719371693854978,
-          "passed": false
+          "actual": 0.3142003137898006,
+          "passed": true
         },
         {
           "expectation": "minRawNovelty",
@@ -277,36 +297,56 @@
       },
       "rationale": "Structured treatment of unresolved questions is a new, product-specific approach to safer summaries.",
       "score": {
-        "finalScore": 0.14464014900680128,
+        "finalScore": 0.34083262849753676,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.45869483234308045,
           "aggregatedSimilarity": 0.4586948323430805,
           "novelty": 0.5413051676569195
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-018",
           "maxSimilarity": 0.10526315789473684,
           "novelty": 0.8947368421052632
         },
         "rawNovelty": 0.594319918824171,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.46010939250838157,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.13421052631578947
+        },
         "relevance": {
           "similarity": 0.24337085873373349,
-          "gate": 0.24337085873373349
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.573483434934934
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-004",
             "semanticSimilarity": 0.4612330995202817,
-            "lexicalSimilarity": 0.02631578947368421
+            "lexicalSimilarity": 0.02631578947368421,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.2767398597121691
           },
           {
+            "rank": 2,
             "submissionId": "submission-032",
             "semanticSimilarity": 0.4552175071600312,
-            "lexicalSimilarity": 0.08108108108108109
+            "lexicalSimilarity": 0.08108108108108109,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.13656525214800938
           },
           {
+            "rank": 3,
             "submissionId": "submission-013",
             "semanticSimilarity": 0.4538972048290206,
-            "lexicalSimilarity": 0.05405405405405406
+            "lexicalSimilarity": 0.05405405405405406,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.04538972048290207
           }
         ]
       },
@@ -317,8 +357,8 @@
           "metric": "finalScore",
           "operator": "min",
           "expected": 0.15,
-          "actual": 0.14464014900680128,
-          "passed": false
+          "actual": 0.34083262849753676,
+          "passed": true
         },
         {
           "expectation": "minRawNovelty",
@@ -354,36 +394,56 @@
       },
       "rationale": "Bot-driven distortion is a novel analytics failure mode while remaining specific to recurring support issues.",
       "score": {
-        "finalScore": 0.17440351940248974,
+        "finalScore": 0.48036488553580425,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.5080906115466034,
           "aggregatedSimilarity": 0.5080906115466035,
           "novelty": 0.4919093884533965
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-039",
           "maxSimilarity": 0.16666666666666666,
           "novelty": 0.8333333333333334
         },
         "rawNovelty": 0.543122980185387,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.418122980185387,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.125
+        },
         "relevance": {
           "similarity": 0.32111239215648674,
-          "gate": 0.32111239215648674
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.884449568625947
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-040",
             "semanticSimilarity": 0.5136586308212673,
-            "lexicalSimilarity": 0.05555555555555555
+            "lexicalSimilarity": 0.05555555555555555,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3081951784927604
           },
           {
+            "rank": 2,
             "submissionId": "submission-037",
             "semanticSimilarity": 0.5049144227838235,
-            "lexicalSimilarity": 0.05128205128205128
+            "lexicalSimilarity": 0.05128205128205128,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.15147432683514706
           },
           {
+            "rank": 3,
             "submissionId": "submission-038",
             "semanticSimilarity": 0.4842110621869604,
-            "lexicalSimilarity": 0.1388888888888889
+            "lexicalSimilarity": 0.1388888888888889,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.04842110621869605
           }
         ]
       },
@@ -394,7 +454,7 @@
           "metric": "finalScore",
           "operator": "min",
           "expected": 0.15,
-          "actual": 0.17440351940248974,
+          "actual": 0.48036488553580425,
           "passed": true
         },
         {
@@ -431,36 +491,56 @@
       },
       "rationale": "Historical workflow replay is a new safety mechanism tied directly to summaries, action items, and admin rollout.",
       "score": {
-        "finalScore": 0.1553041463563739,
+        "finalScore": 0.43373802609840745,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.6059851593718389,
           "aggregatedSimilarity": 0.605985159371839,
           "novelty": 0.39401484062816095
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-015",
           "maxSimilarity": 0.10810810810810811,
           "novelty": 0.8918918918918919
         },
         "rawNovelty": 0.4686963983177206,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.3349126145339368,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.13378378378378378
+        },
         "relevance": {
           "similarity": 0.3313534025731858,
-          "gate": 0.3313534025731858
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.9254136102927433
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-003",
             "semanticSimilarity": 0.6216493906798436,
-            "lexicalSimilarity": 0.04878048780487805
+            "lexicalSimilarity": 0.04878048780487805,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3729896344079062
           },
           {
+            "rank": 2,
             "submissionId": "submission-020",
             "semanticSimilarity": 0.5921061237564129,
-            "lexicalSimilarity": 0.05128205128205128
+            "lexicalSimilarity": 0.05128205128205128,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.1776318371269239
           },
           {
+            "rank": 3,
             "submissionId": "submission-023",
             "semanticSimilarity": 0.5536368783700885,
-            "lexicalSimilarity": 0.05
+            "lexicalSimilarity": 0.05,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.05536368783700885
           }
         ]
       },
@@ -471,7 +551,7 @@
           "metric": "finalScore",
           "operator": "min",
           "expected": 0.15,
-          "actual": 0.1553041463563739,
+          "actual": 0.43373802609840745,
           "passed": true
         },
         {
@@ -509,36 +589,56 @@
       },
       "rationale": "The headline, body, and perspective exactly reproduce baseline submission-001, so both semantic and lexical novelty should be low.",
       "score": {
-        "finalScore": 0.041474801500257286,
+        "finalScore": 0.10688380938676974,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.8742543418979178,
           "aggregatedSimilarity": 0.874254341897918,
           "novelty": 0.12574565810208205
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-001",
           "maxSimilarity": 1,
           "novelty": 0
         },
         "rawNovelty": 0.10688380938676974,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.10688380938676974,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0
+        },
         "relevance": {
           "similarity": 0.38803633345604827,
-          "gate": 0.38803633345604827
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 1
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-001",
             "semanticSimilarity": 1,
-            "lexicalSimilarity": 1
+            "lexicalSimilarity": 1,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.6000000000000001
           },
           {
+            "rank": 2,
             "submissionId": "submission-004",
             "semanticSimilarity": 0.6997111250594517,
-            "lexicalSimilarity": 0.16666666666666666
+            "lexicalSimilarity": 0.16666666666666666,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.20991333751783553
           },
           {
+            "rank": 3,
             "submissionId": "submission-018",
             "semanticSimilarity": 0.6434100438008233,
-            "lexicalSimilarity": 0.08571428571428572
+            "lexicalSimilarity": 0.08571428571428572,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.06434100438008235
           }
         ]
       },
@@ -549,7 +649,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.35,
-          "actual": 0.041474801500257286,
+          "actual": 0.10688380938676974,
           "passed": true
         },
         {
@@ -577,36 +677,56 @@
       },
       "rationale": "This deliberately duplicates baseline submission-009 to verify exact repetition is not rewarded.",
       "score": {
-        "finalScore": 0.026330073923149535,
+        "finalScore": 0.04332225187482077,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.8176528123006547,
           "aggregatedSimilarity": 0.8176528123006548,
           "novelty": 0.18234718769934521
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-009",
           "maxSimilarity": 1,
           "novelty": 0
         },
         "rawNovelty": 0.15499510954444343,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.15499510954444343,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0
+        },
         "relevance": {
           "similarity": 0.16987680450394874,
-          "gate": 0.16987680450394874
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.279507218015795
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-009",
             "semanticSimilarity": 1,
-            "lexicalSimilarity": 1
+            "lexicalSimilarity": 1,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.6000000000000001
           },
           {
+            "rank": 2,
             "submissionId": "submission-010",
             "semanticSimilarity": 0.5480812555571234,
-            "lexicalSimilarity": 0.08823529411764706
+            "lexicalSimilarity": 0.08823529411764706,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.16442437666713705
           },
           {
+            "rank": 3,
             "submissionId": "submission-033",
             "semanticSimilarity": 0.5322843563351769,
-            "lexicalSimilarity": 0.23333333333333334
+            "lexicalSimilarity": 0.23333333333333334,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.0532284356335177
           }
         ]
       },
@@ -617,7 +737,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.35,
-          "actual": 0.026330073923149535,
+          "actual": 0.04332225187482077,
           "passed": true
         },
         {
@@ -645,36 +765,56 @@
       },
       "rationale": "This is an exact content duplicate of baseline submission-043 under a distinct evaluation-only ID.",
       "score": {
-        "finalScore": 0.03296912359230406,
+        "finalScore": 0.08161726460191106,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.852178735978514,
           "aggregatedSimilarity": 0.8521787359785141,
           "novelty": 0.14782126402148588
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-043",
           "maxSimilarity": 1,
           "novelty": 0
         },
         "rawNovelty": 0.12564807441826298,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.12564807441826298,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0
+        },
         "relevance": {
           "similarity": 0.2623925893408836,
-          "gate": 0.2623925893408836
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.6495703573635345
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-043",
             "semanticSimilarity": 0.9999999999999999,
-            "lexicalSimilarity": 1
+            "lexicalSimilarity": 1,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.6
           },
           {
+            "rank": 2,
             "submissionId": "submission-020",
             "semanticSimilarity": 0.6505862020668649,
-            "lexicalSimilarity": 0.1724137931034483
+            "lexicalSimilarity": 0.1724137931034483,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.19517586062005948
           },
           {
+            "rank": 3,
             "submissionId": "submission-033",
             "semanticSimilarity": 0.5700287535845471,
-            "lexicalSimilarity": 0.12903225806451613
+            "lexicalSimilarity": 0.12903225806451613,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.05700287535845472
           }
         ]
       },
@@ -685,7 +825,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.35,
-          "actual": 0.03296912359230406,
+          "actual": 0.08161726460191106,
           "passed": true
         },
         {
@@ -712,36 +852,56 @@
       },
       "rationale": "This lightly rewrites baseline submission-001 while preserving its wording, meaning, and perspective.",
       "score": {
-        "finalScore": 0.08204517228805785,
+        "finalScore": 0.16854971880058683,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.8605297425875448,
           "aggregatedSimilarity": 0.8605297425875449,
           "novelty": 0.1394702574124551
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-001",
           "maxSimilarity": 0.6666666666666666,
           "novelty": 0.33333333333333337
         },
         "rawNovelty": 0.16854971880058683,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.11854971880058685,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.05
+        },
         "relevance": {
           "similarity": 0.48677133887791574,
-          "gate": 0.48677133887791574
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 1
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-001",
             "semanticSimilarity": 0.960490897271349,
-            "lexicalSimilarity": 0.6666666666666666
+            "lexicalSimilarity": 0.6666666666666666,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.5762945383628094
           },
           {
+            "rank": 2,
             "submissionId": "submission-004",
             "semanticSimilarity": 0.7129867520007812,
-            "lexicalSimilarity": 0.16129032258064516
+            "lexicalSimilarity": 0.16129032258064516,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.21389602560023438
           },
           {
+            "rank": 3,
             "submissionId": "submission-018",
             "semanticSimilarity": 0.703391786245011,
-            "lexicalSimilarity": 0.14705882352941177
+            "lexicalSimilarity": 0.14705882352941177,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.07033917862450112
           }
         ]
       },
@@ -752,7 +912,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.5,
-          "actual": 0.08204517228805785,
+          "actual": 0.16854971880058683,
           "passed": true
         }
       ]
@@ -771,36 +931,56 @@
       },
       "rationale": "This changes the word order of baseline submission-009 but contributes the same retention-control idea.",
       "score": {
-        "finalScore": 0.05351699989848816,
+        "finalScore": 0.11076632118360615,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.7763854378305316,
           "aggregatedSimilarity": 0.7763854378305317,
           "novelty": 0.2236145621694683
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-009",
           "maxSimilarity": 0.5454545454545454,
           "novelty": 0.4545454545454546
         },
         "rawNovelty": 0.25825419602586625,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.19007237784404804,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.06818181818181819
+        },
         "relevance": {
           "similarity": 0.2072260614620488,
-          "gate": 0.2072260614620488
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.42890424584819525
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-009",
             "semanticSimilarity": 0.8846834813177823,
-            "lexicalSimilarity": 0.5454545454545454
+            "lexicalSimilarity": 0.5454545454545454,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.5308100887906695
           },
           {
+            "rank": 2,
             "submissionId": "submission-010",
             "semanticSimilarity": 0.6203918493303119,
-            "lexicalSimilarity": 0.13793103448275862
+            "lexicalSimilarity": 0.13793103448275862,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.1861175547990936
           },
           {
+            "rank": 3,
             "submissionId": "submission-023",
             "semanticSimilarity": 0.5945779424076871,
-            "lexicalSimilarity": 0.1
+            "lexicalSimilarity": 0.1,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.059457794240768726
           }
         ]
       },
@@ -811,7 +991,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.5,
-          "actual": 0.05351699989848816,
+          "actual": 0.11076632118360615,
           "passed": true
         }
       ]
@@ -830,36 +1010,56 @@
       },
       "rationale": "This is a small grammatical rewrite of baseline submission-014 with nearly identical tokens and intent.",
       "score": {
-        "finalScore": 0.06942947358382319,
+        "finalScore": 0.1802144067259872,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.7951578095524625,
           "aggregatedSimilarity": 0.7951578095524626,
           "novelty": 0.20484219044753738
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-014",
           "maxSimilarity": 0.5357142857142857,
           "novelty": 0.4642857142857143
         },
         "rawNovelty": 0.2437587190232639,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.17411586188040676,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.06964285714285715
+        },
         "relevance": {
           "similarity": 0.2848286775629017,
-          "gate": 0.2848286775629017
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.7393147102516069
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-014",
             "semanticSimilarity": 0.949043463984814,
-            "lexicalSimilarity": 0.5357142857142857
+            "lexicalSimilarity": 0.5357142857142857,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.5694260783908884
           },
           {
+            "rank": 2,
             "submissionId": "submission-013",
             "semanticSimilarity": 0.5701212651983503,
-            "lexicalSimilarity": 0.18181818181818182
+            "lexicalSimilarity": 0.18181818181818182,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.1710363795595051
           },
           {
+            "rank": 3,
             "submissionId": "submission-029",
             "semanticSimilarity": 0.546953516020692,
-            "lexicalSimilarity": 0.025
+            "lexicalSimilarity": 0.025,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.05469535160206921
           }
         ]
       },
@@ -870,7 +1070,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.5,
-          "actual": 0.06942947358382319,
+          "actual": 0.1802144067259872,
           "passed": true
         }
       ]
@@ -889,36 +1089,56 @@
       },
       "rationale": "This closely restates baseline submission-022 using contractions and minor synonym substitutions.",
       "score": {
-        "finalScore": 0.08211827416469954,
+        "finalScore": 0.2177356383225176,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.7817184729239829,
           "aggregatedSimilarity": 0.781718472923983,
           "novelty": 0.218281527076017
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-022",
           "maxSimilarity": 0.391304347826087,
           "novelty": 0.6086956521739131
         },
         "rawNovelty": 0.2768436458407014,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.18553929801461444,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.09130434782608696
+        },
         "relevance": {
           "similarity": 0.296623294045012,
-          "gate": 0.296623294045012
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.786493176180048
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-022",
             "semanticSimilarity": 0.8750666702529262,
-            "lexicalSimilarity": 0.391304347826087
+            "lexicalSimilarity": 0.391304347826087,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.5250400021517558
           },
           {
+            "rank": 2,
             "submissionId": "submission-021",
             "semanticSimilarity": 0.6542075557465069,
-            "lexicalSimilarity": 0.0625
+            "lexicalSimilarity": 0.0625,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.19626226672395208
           },
           {
+            "rank": 3,
             "submissionId": "submission-042",
             "semanticSimilarity": 0.6041620404827506,
-            "lexicalSimilarity": 0.1
+            "lexicalSimilarity": 0.1,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.060416204048275066
           }
         ]
       },
@@ -929,7 +1149,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.5,
-          "actual": 0.08211827416469954,
+          "actual": 0.2177356383225176,
           "passed": true
         }
       ]
@@ -948,36 +1168,56 @@
       },
       "rationale": "This semantically matches the baseline retention cluster while deliberately avoiding most of its surface wording.",
       "score": {
-        "finalScore": 0.18108602509499871,
+        "finalScore": 0.512114848911343,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.5315056617704007,
           "aggregatedSimilarity": 0.5315056617704008,
           "novelty": 0.4684943382295992
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-011",
           "maxSimilarity": 0.11764705882352941,
           "novelty": 0.8823529411764706
         },
         "rawNovelty": 0.5305731286716299,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.3982201874951593,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.1323529411764706
+        },
         "relevance": {
           "similarity": 0.3413026693386734,
-          "gate": 0.3413026693386734
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.9652106773546938
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-012",
             "semanticSimilarity": 0.5451200925720245,
-            "lexicalSimilarity": 0.10810810810810811
+            "lexicalSimilarity": 0.10810810810810811,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3270720555432148
           },
           {
+            "rank": 2,
             "submissionId": "submission-011",
             "semanticSimilarity": 0.5199527271641806,
-            "lexicalSimilarity": 0.11764705882352941
+            "lexicalSimilarity": 0.11764705882352941,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.15598581814925422
           },
           {
+            "rank": 3,
             "submissionId": "submission-003",
             "semanticSimilarity": 0.48447788077931814,
-            "lexicalSimilarity": 0.05128205128205128
+            "lexicalSimilarity": 0.05128205128205128,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.048447788077931826
           }
         ]
       },
@@ -988,7 +1228,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.6,
-          "actual": 0.18108602509499871,
+          "actual": 0.512114848911343,
           "passed": true
         }
       ]
@@ -1007,36 +1247,56 @@
       },
       "rationale": "This expresses the source-link verification idea from baseline submission-014 with low lexical overlap.",
       "score": {
-        "finalScore": 0.1416006663216876,
+        "finalScore": 0.3786837419185586,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.5984045506471863,
           "aggregatedSimilarity": 0.5984045506471865,
           "novelty": 0.40159544935281355
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-023",
           "maxSimilarity": 0.14705882352941177,
           "novelty": 0.8529411764705882
         },
         "rawNovelty": 0.46929730842047973,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.3413561319498915,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.12794117647058822
+        },
         "relevance": {
           "similarity": 0.30172912518564166,
-          "gate": 0.30172912518564166
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.8069165007425667
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-029",
             "semanticSimilarity": 0.6089065879834454,
-            "lexicalSimilarity": 0.05128205128205128
+            "lexicalSimilarity": 0.05128205128205128,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3653439527900673
           },
           {
+            "rank": 2,
             "submissionId": "submission-014",
             "semanticSimilarity": 0.585866288699949,
-            "lexicalSimilarity": 0.13157894736842105
+            "lexicalSimilarity": 0.13157894736842105,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.1757598866099847
           },
           {
+            "rank": 3,
             "submissionId": "submission-013",
             "semanticSimilarity": 0.5730071124713446,
-            "lexicalSimilarity": 0.08333333333333333
+            "lexicalSimilarity": 0.08333333333333333,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.05730071124713447
           }
         ]
       },
@@ -1047,7 +1307,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.6,
-          "actual": 0.1416006663216876,
+          "actual": 0.3786837419185586,
           "passed": true
         }
       ]
@@ -1066,36 +1326,56 @@
       },
       "rationale": "This paraphrases baseline submission-017's human-approval requirement without copying its main phrases.",
       "score": {
-        "finalScore": 0.2409249627218181,
+        "finalScore": 0.5327547443147511,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.5270758664170347,
           "aggregatedSimilarity": 0.5270758664170349,
           "novelty": 0.47292413358296514
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-045",
           "maxSimilarity": 0.1282051282051282,
           "novelty": 0.8717948717948718
         },
         "rawNovelty": 0.5327547443147511,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.40198551354552037,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.13076923076923078
+        },
         "relevance": {
           "similarity": 0.4522249032839768,
-          "gate": 0.4522249032839768
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 1
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-017",
             "semanticSimilarity": 0.5313623745786321,
-            "lexicalSimilarity": 0.075
+            "lexicalSimilarity": 0.075,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.31881742474717933
           },
           {
+            "rank": 2,
             "submissionId": "submission-034",
             "semanticSimilarity": 0.5235979585215655,
-            "lexicalSimilarity": 0.07692307692307693
+            "lexicalSimilarity": 0.07692307692307693,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.1570793875564697
           },
           {
+            "rank": 3,
             "submissionId": "submission-031",
             "semanticSimilarity": 0.511790541133858,
-            "lexicalSimilarity": 0
+            "lexicalSimilarity": 0,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.05117905411338581
           }
         ]
       },
@@ -1106,7 +1386,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.6,
-          "actual": 0.2409249627218181,
+          "actual": 0.5327547443147511,
           "passed": true
         }
       ]
@@ -1125,36 +1405,56 @@
       },
       "rationale": "This is a semantic restatement of the mixed-language and regional-phrase risk in baseline submission-027.",
       "score": {
-        "finalScore": 0.12823554298561704,
+        "finalScore": 0.3382287125465929,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.6323553715247364,
           "aggregatedSimilarity": 0.6323553715247365,
           "novelty": 0.36764462847526347
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-006",
           "maxSimilarity": 0.17142857142857143,
           "novelty": 0.8285714285714285
         },
         "rawNovelty": 0.4367836484896882,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.3124979342039739,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.12428571428571428
+        },
         "relevance": {
           "similarity": 0.2935905302980784,
-          "gate": 0.2935905302980784
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.7743621211923137
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-027",
             "semanticSimilarity": 0.654125061757823,
-            "lexicalSimilarity": 0.11428571428571428
+            "lexicalSimilarity": 0.11428571428571428,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3924750370546939
           },
           {
+            "rank": 2,
             "submissionId": "submission-028",
             "semanticSimilarity": 0.6154903989593778,
-            "lexicalSimilarity": 0.11764705882352941
+            "lexicalSimilarity": 0.11764705882352941,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.1846471196878134
           },
           {
+            "rank": 3,
             "submissionId": "submission-025",
             "semanticSimilarity": 0.5523321478222923,
-            "lexicalSimilarity": 0.14285714285714285
+            "lexicalSimilarity": 0.14285714285714285,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.05523321478222924
           }
         ]
       },
@@ -1165,7 +1465,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.6,
-          "actual": 0.12823554298561704,
+          "actual": 0.3382287125465929,
           "passed": true
         }
       ]
@@ -1184,36 +1484,56 @@
       },
       "rationale": "The dashboard packaging is new, but privacy, retention, and admin visibility are already crowded baseline themes.",
       "score": {
-        "finalScore": 0.17027246021218545,
+        "finalScore": 0.41936795785746434,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.6389788731088654,
           "aggregatedSimilarity": 0.6389788731088655,
           "novelty": 0.3610211268911345
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-006",
           "maxSimilarity": 0.25,
           "novelty": 0.75
         },
         "rawNovelty": 0.41936795785746434,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.30686795785746435,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.11249999999999999
+        },
         "relevance": {
           "similarity": 0.40602162616834453,
-          "gate": 0.40602162616834453
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 1
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-006",
             "semanticSimilarity": 0.6752215944850827,
-            "lexicalSimilarity": 0.25
+            "lexicalSimilarity": 0.25,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.40513295669104965
           },
           {
+            "rank": 2,
             "submissionId": "submission-008",
             "semanticSimilarity": 0.5868375488145939,
-            "lexicalSimilarity": 0.08571428571428572
+            "lexicalSimilarity": 0.08571428571428572,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.1760512646443782
           },
           {
+            "rank": 3,
             "submissionId": "submission-033",
             "semanticSimilarity": 0.5779465177343761,
-            "lexicalSimilarity": 0.08571428571428572
+            "lexicalSimilarity": 0.08571428571428572,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.05779465177343762
           }
         ]
       },
@@ -1224,7 +1544,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.7,
-          "actual": 0.17027246021218545,
+          "actual": 0.41936795785746434,
           "passed": true
         }
       ]
@@ -1243,36 +1563,56 @@
       },
       "rationale": "This combines the well-represented multilingual accuracy and administrator analytics themes.",
       "score": {
-        "finalScore": 0.08855208095370158,
+        "finalScore": 0.16535573527262845,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.5905958349165151,
           "aggregatedSimilarity": 0.5905958349165152,
           "novelty": 0.40940416508348476
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-040",
           "maxSimilarity": 0.1724137931034483,
           "novelty": 0.8275862068965517
         },
         "rawNovelty": 0.47213147135544475,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.347993540320962,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.12413793103448276
+        },
         "relevance": {
           "similarity": 0.1875580983819548,
-          "gate": 0.1875580983819548
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.35023239352781926
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-026",
             "semanticSimilarity": 0.6149138404843884,
-            "lexicalSimilarity": 0.13793103448275862
+            "lexicalSimilarity": 0.13793103448275862,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3689483042906331
           },
           {
+            "rank": 2,
             "submissionId": "submission-027",
             "semanticSimilarity": 0.5549836410187413,
-            "lexicalSimilarity": 0.02857142857142857
+            "lexicalSimilarity": 0.02857142857142857,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.16649509230562243
           },
           {
+            "rank": 3,
             "submissionId": "submission-025",
             "semanticSimilarity": 0.5515243832025977,
-            "lexicalSimilarity": 0.08823529411764706
+            "lexicalSimilarity": 0.08823529411764706,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.055152438320259775
           }
         ]
       },
@@ -1283,7 +1623,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.7,
-          "actual": 0.08855208095370158,
+          "actual": 0.16535573527262845,
           "passed": true
         }
       ]
@@ -1302,36 +1642,56 @@
       },
       "rationale": "Human review, sensitive data, summaries, and workflow controls all recur throughout the baseline.",
       "score": {
-        "finalScore": 0.14444324825506483,
+        "finalScore": 0.386693477057344,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.5770388567935645,
           "aggregatedSimilarity": 0.5770388567935646,
           "novelty": 0.4229611432064354
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-017",
           "maxSimilarity": 0.21212121212121213,
           "novelty": 0.7878787878787878
         },
         "rawNovelty": 0.47769878990728826,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.3595169717254701,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.11818181818181817
+        },
         "relevance": {
           "similarity": 0.3023730671017575,
-          "gate": 0.3023730671017575
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.80949226840703
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-017",
             "semanticSimilarity": 0.5878771008165817,
-            "lexicalSimilarity": 0.21212121212121213
+            "lexicalSimilarity": 0.21212121212121213,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3527262604899491
           },
           {
+            "rank": 2,
             "submissionId": "submission-025",
             "semanticSimilarity": 0.5614870513681254,
-            "lexicalSimilarity": 0.05555555555555555
+            "lexicalSimilarity": 0.05555555555555555,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.16844611541043764
           },
           {
+            "rank": 3,
             "submissionId": "submission-032",
             "semanticSimilarity": 0.5586648089317785,
-            "lexicalSimilarity": 0.05555555555555555
+            "lexicalSimilarity": 0.05555555555555555,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.05586648089317786
           }
         ]
       },
@@ -1342,7 +1702,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.7,
-          "actual": 0.14444324825506483,
+          "actual": 0.386693477057344,
           "passed": true
         }
       ]
@@ -1361,36 +1721,56 @@
       },
       "rationale": "This recombines existing role-based access, analytics explanation, and conversation privacy themes.",
       "score": {
-        "finalScore": 0.1287688800932411,
+        "finalScore": 0.3456058711722201,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.7357198479567808,
           "aggregatedSimilarity": 0.7357198479567809,
           "novelty": 0.2642801520432191
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-038",
           "maxSimilarity": 0.1935483870967742,
           "novelty": 0.8064516129032258
         },
         "rawNovelty": 0.3456058711722201,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.2246381292367362,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.12096774193548386
+        },
         "relevance": {
           "similarity": 0.37258880949124223,
-          "gate": 0.37258880949124223
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 1
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-040",
             "semanticSimilarity": 0.7810594739168936,
-            "lexicalSimilarity": 0.13333333333333333
+            "lexicalSimilarity": 0.13333333333333333,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.4686356843501362
           },
           {
+            "rank": 2,
             "submissionId": "submission-038",
             "semanticSimilarity": 0.6884853344746308,
-            "lexicalSimilarity": 0.1935483870967742
+            "lexicalSimilarity": 0.1935483870967742,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.20654560034238925
           },
           {
+            "rank": 3,
             "submissionId": "submission-037",
             "semanticSimilarity": 0.605385632642554,
-            "lexicalSimilarity": 0.05714285714285714
+            "lexicalSimilarity": 0.05714285714285714,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.060538563264255406
           }
         ]
       },
@@ -1401,7 +1781,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.7,
-          "actual": 0.1287688800932411,
+          "actual": 0.3456058711722201,
           "passed": true
         }
       ]
@@ -1422,36 +1802,56 @@
       },
       "rationale": "Summary freshness is directly relevant to the announced feature and is not represented in the baseline.",
       "score": {
-        "finalScore": 0.12719371693854978,
+        "finalScore": 0.3142003137898006,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.5747807236341218,
           "aggregatedSimilarity": 0.5747807236341219,
           "novelty": 0.4252192763658781
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-006",
           "maxSimilarity": 0.16666666666666666,
           "novelty": 0.8333333333333334
         },
         "rawNovelty": 0.4864363849109964,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.3614363849109964,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.125
+        },
         "relevance": {
           "similarity": 0.2614806804836824,
-          "gate": 0.2614806804836824
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.6459227219347297
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-004",
             "semanticSimilarity": 0.591552764694954,
-            "lexicalSimilarity": 0.08108108108108109
+            "lexicalSimilarity": 0.08108108108108109,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3549316588169724
           },
           {
+            "rank": 2,
             "submissionId": "submission-014",
             "semanticSimilarity": 0.5521391008585979,
-            "lexicalSimilarity": 0.15789473684210525
+            "lexicalSimilarity": 0.15789473684210525,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.1656417302575794
           },
           {
+            "rank": 3,
             "submissionId": "submission-016",
             "semanticSimilarity": 0.5420733455957008,
-            "lexicalSimilarity": 0.125
+            "lexicalSimilarity": 0.125,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.05420733455957009
           }
         ]
       },
@@ -1462,8 +1862,8 @@
           "metric": "finalScore",
           "operator": "min",
           "expected": 0.15,
-          "actual": 0.12719371693854978,
-          "passed": false
+          "actual": 0.3142003137898006,
+          "passed": true
         },
         {
           "expectation": "minRawNovelty",
@@ -1499,36 +1899,56 @@
       },
       "rationale": "Cross-conversation ownership conflicts are relevant to extracted action items but absent from existing submissions.",
       "score": {
-        "finalScore": 0.19570926788978826,
+        "finalScore": 0.5035221635294764,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.5562277952284795,
           "aggregatedSimilarity": 0.5562277952284796,
           "novelty": 0.44377220477152035
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-047",
           "maxSimilarity": 0.15789473684210525,
           "novelty": 0.8421052631578947
         },
         "rawNovelty": 0.5035221635294764,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.37720637405579227,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.1263157894736842
+        },
         "relevance": {
           "similarity": 0.3886805429138401,
-          "gate": 0.3886805429138401
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 1
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-045",
             "semanticSimilarity": 0.5975483947798506,
-            "lexicalSimilarity": 0.1
+            "lexicalSimilarity": 0.1,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3585290368679104
           },
           {
+            "rank": 2,
             "submissionId": "submission-016",
             "semanticSimilarity": 0.49765150759750826,
-            "lexicalSimilarity": 0.0975609756097561
+            "lexicalSimilarity": 0.0975609756097561,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.1492954522792525
           },
           {
+            "rank": 3,
             "submissionId": "submission-017",
             "semanticSimilarity": 0.48403306081316755,
-            "lexicalSimilarity": 0.075
+            "lexicalSimilarity": 0.075,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.048403306081316766
           }
         ]
       },
@@ -1539,7 +1959,7 @@
           "metric": "finalScore",
           "operator": "min",
           "expected": 0.15,
-          "actual": 0.19570926788978826,
+          "actual": 0.5035221635294764,
           "passed": true
         },
         {
@@ -1576,36 +1996,56 @@
       },
       "rationale": "Structured treatment of unresolved questions is a new, product-specific approach to safer summaries.",
       "score": {
-        "finalScore": 0.14464014900680128,
+        "finalScore": 0.34083262849753676,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.45869483234308045,
           "aggregatedSimilarity": 0.4586948323430805,
           "novelty": 0.5413051676569195
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-018",
           "maxSimilarity": 0.10526315789473684,
           "novelty": 0.8947368421052632
         },
         "rawNovelty": 0.594319918824171,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.46010939250838157,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.13421052631578947
+        },
         "relevance": {
           "similarity": 0.24337085873373349,
-          "gate": 0.24337085873373349
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.573483434934934
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-004",
             "semanticSimilarity": 0.4612330995202817,
-            "lexicalSimilarity": 0.02631578947368421
+            "lexicalSimilarity": 0.02631578947368421,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.2767398597121691
           },
           {
+            "rank": 2,
             "submissionId": "submission-032",
             "semanticSimilarity": 0.4552175071600312,
-            "lexicalSimilarity": 0.08108108108108109
+            "lexicalSimilarity": 0.08108108108108109,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.13656525214800938
           },
           {
+            "rank": 3,
             "submissionId": "submission-013",
             "semanticSimilarity": 0.4538972048290206,
-            "lexicalSimilarity": 0.05405405405405406
+            "lexicalSimilarity": 0.05405405405405406,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.04538972048290207
           }
         ]
       },
@@ -1616,8 +2056,8 @@
           "metric": "finalScore",
           "operator": "min",
           "expected": 0.15,
-          "actual": 0.14464014900680128,
-          "passed": false
+          "actual": 0.34083262849753676,
+          "passed": true
         },
         {
           "expectation": "minRawNovelty",
@@ -1653,36 +2093,56 @@
       },
       "rationale": "Bot-driven distortion is a novel analytics failure mode while remaining specific to recurring support issues.",
       "score": {
-        "finalScore": 0.17440351940248974,
+        "finalScore": 0.48036488553580425,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.5080906115466034,
           "aggregatedSimilarity": 0.5080906115466035,
           "novelty": 0.4919093884533965
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-039",
           "maxSimilarity": 0.16666666666666666,
           "novelty": 0.8333333333333334
         },
         "rawNovelty": 0.543122980185387,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.418122980185387,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.125
+        },
         "relevance": {
           "similarity": 0.32111239215648674,
-          "gate": 0.32111239215648674
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.884449568625947
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-040",
             "semanticSimilarity": 0.5136586308212673,
-            "lexicalSimilarity": 0.05555555555555555
+            "lexicalSimilarity": 0.05555555555555555,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3081951784927604
           },
           {
+            "rank": 2,
             "submissionId": "submission-037",
             "semanticSimilarity": 0.5049144227838235,
-            "lexicalSimilarity": 0.05128205128205128
+            "lexicalSimilarity": 0.05128205128205128,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.15147432683514706
           },
           {
+            "rank": 3,
             "submissionId": "submission-038",
             "semanticSimilarity": 0.4842110621869604,
-            "lexicalSimilarity": 0.1388888888888889
+            "lexicalSimilarity": 0.1388888888888889,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.04842110621869605
           }
         ]
       },
@@ -1693,7 +2153,7 @@
           "metric": "finalScore",
           "operator": "min",
           "expected": 0.15,
-          "actual": 0.17440351940248974,
+          "actual": 0.48036488553580425,
           "passed": true
         },
         {
@@ -1730,36 +2190,56 @@
       },
       "rationale": "Historical workflow replay is a new safety mechanism tied directly to summaries, action items, and admin rollout.",
       "score": {
-        "finalScore": 0.1553041463563739,
+        "finalScore": 0.43373802609840745,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.6059851593718389,
           "aggregatedSimilarity": 0.605985159371839,
           "novelty": 0.39401484062816095
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-015",
           "maxSimilarity": 0.10810810810810811,
           "novelty": 0.8918918918918919
         },
         "rawNovelty": 0.4686963983177206,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.3349126145339368,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.13378378378378378
+        },
         "relevance": {
           "similarity": 0.3313534025731858,
-          "gate": 0.3313534025731858
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.9254136102927433
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-003",
             "semanticSimilarity": 0.6216493906798436,
-            "lexicalSimilarity": 0.04878048780487805
+            "lexicalSimilarity": 0.04878048780487805,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3729896344079062
           },
           {
+            "rank": 2,
             "submissionId": "submission-020",
             "semanticSimilarity": 0.5921061237564129,
-            "lexicalSimilarity": 0.05128205128205128
+            "lexicalSimilarity": 0.05128205128205128,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.1776318371269239
           },
           {
+            "rank": 3,
             "submissionId": "submission-023",
             "semanticSimilarity": 0.5536368783700885,
-            "lexicalSimilarity": 0.05
+            "lexicalSimilarity": 0.05,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.05536368783700885
           }
         ]
       },
@@ -1770,7 +2250,7 @@
           "metric": "finalScore",
           "operator": "min",
           "expected": 0.15,
-          "actual": 0.1553041463563739,
+          "actual": 0.43373802609840745,
           "passed": true
         },
         {
@@ -1807,36 +2287,56 @@
       },
       "rationale": "Motorsport regulation is unlike the baseline and unrelated to AI-assisted customer support.",
       "score": {
-        "finalScore": 0.059369118449778664,
+        "finalScore": 0,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.3007063115936805,
           "aggregatedSimilarity": 0.30070631159368055,
           "novelty": 0.6992936884063194
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-001",
           "maxSimilarity": 0.09090909090909091,
           "novelty": 0.9090909090909091
         },
         "rawNovelty": 0.7307632715090079,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.5943996351453715,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.13636363636363635
+        },
         "relevance": {
           "similarity": 0.08124261407826767,
-          "gate": 0.08124261407826767
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-004",
             "semanticSimilarity": 0.30905768990984145,
-            "lexicalSimilarity": 0.08823529411764706
+            "lexicalSimilarity": 0.08823529411764706,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.18543461394590488
           },
           {
+            "rank": 2,
             "submissionId": "submission-001",
             "semanticSimilarity": 0.2981566211750358,
-            "lexicalSimilarity": 0.09090909090909091
+            "lexicalSimilarity": 0.09090909090909091,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.08944698635251075
           },
           {
+            "rank": 3,
             "submissionId": "submission-049",
             "semanticSimilarity": 0.2582471129526493,
-            "lexicalSimilarity": 0.025
+            "lexicalSimilarity": 0.025,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.025824711295264934
           }
         ]
       },
@@ -1847,7 +2347,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.25,
-          "actual": 0.059369118449778664,
+          "actual": 0,
           "passed": true
         },
         {
@@ -1884,36 +2384,56 @@
       },
       "rationale": "Gardening advice should be novel relative to the baseline but irrelevant to the product announcement.",
       "score": {
-        "finalScore": 0.015379669540896306,
+        "finalScore": 0,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.13641400602098705,
           "aggregatedSimilarity": 0.13641400602098708,
           "novelty": 0.8635859939790129
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-006",
           "maxSimilarity": 0.08333333333333333,
           "novelty": 0.9166666666666666
         },
         "rawNovelty": 0.8715480948821609,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.7340480948821609,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.13749999999999998
+        },
         "relevance": {
           "similarity": 0.017646380769125242,
-          "gate": 0.017646380769125242
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-049",
             "semanticSimilarity": 0.14210501753357316,
-            "lexicalSimilarity": 0.05128205128205128
+            "lexicalSimilarity": 0.05128205128205128,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.0852630105201439
           },
           {
+            "rank": 2,
             "submissionId": "submission-034",
             "semanticSimilarity": 0.13290796741763894,
-            "lexicalSimilarity": 0
+            "lexicalSimilarity": 0,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.03987239022529169
           },
           {
+            "rank": 3,
             "submissionId": "submission-037",
             "semanticSimilarity": 0.11278605275551488,
-            "lexicalSimilarity": 0.02702702702702703
+            "lexicalSimilarity": 0.02702702702702703,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.01127860527555149
           }
         ]
       },
@@ -1924,7 +2444,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.25,
-          "actual": 0.015379669540896306,
+          "actual": 0,
           "passed": true
         },
         {
@@ -1964,33 +2484,53 @@
         "finalScore": 0,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.19077893828451964,
           "aggregatedSimilarity": 0.19077893828451967,
           "novelty": 0.8092210617154804
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-027",
           "maxSimilarity": 0.08823529411764706,
           "novelty": 0.9117647058823529
         },
         "rawNovelty": 0.8246026083405111,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.6878379024581582,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.13676470588235293
+        },
         "relevance": {
           "similarity": 0,
+          "low": 0.1,
+          "high": 0.35,
           "gate": 0
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-049",
             "semanticSimilarity": 0.19864158229242307,
-            "lexicalSimilarity": 0
+            "lexicalSimilarity": 0,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.11918494937545385
           },
           {
+            "rank": 2,
             "submissionId": "submission-021",
             "semanticSimilarity": 0.18123626110716273,
-            "lexicalSimilarity": 0
+            "lexicalSimilarity": 0,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.05437087833214883
           },
           {
+            "rank": 3,
             "submissionId": "submission-002",
             "semanticSimilarity": 0.17223110576917003,
-            "lexicalSimilarity": 0
+            "lexicalSimilarity": 0,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.017223110576917007
           }
         ]
       },
@@ -2038,36 +2578,56 @@
       },
       "rationale": "Astronomy trip planning is intentionally unrelated despite being a coherent and potentially useful idea.",
       "score": {
-        "finalScore": 0.05808336964661927,
+        "finalScore": 0,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.16688715104455304,
           "aggregatedSimilarity": 0.16688715104455307,
           "novelty": 0.8331128489554469
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-012",
           "maxSimilarity": 0.08333333333333333,
           "novelty": 0.9166666666666666
         },
         "rawNovelty": 0.8456459216121298,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.7081459216121299,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.13749999999999998
+        },
         "relevance": {
           "similarity": 0.06868521228824682,
-          "gate": 0.06868521228824682
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-006",
             "semanticSimilarity": 0.1741252097830186,
-            "lexicalSimilarity": 0.05263157894736842
+            "lexicalSimilarity": 0.05263157894736842,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.10447512586981117
           },
           {
+            "rank": 2,
             "submissionId": "submission-046",
             "semanticSimilarity": 0.15928492290213242,
-            "lexicalSimilarity": 0
+            "lexicalSimilarity": 0,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.047785476870639734
           },
           {
+            "rank": 3,
             "submissionId": "submission-039",
             "semanticSimilarity": 0.14626548304102144,
-            "lexicalSimilarity": 0.02564102564102564
+            "lexicalSimilarity": 0.02564102564102564,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.014626548304102146
           }
         ]
       },
@@ -2078,7 +2638,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.25,
-          "actual": 0.05808336964661927,
+          "actual": 0,
           "passed": true
         },
         {
@@ -2115,36 +2675,56 @@
       },
       "rationale": "Trail maintenance is distant from every announced product capability and should be suppressed by relevance.",
       "score": {
-        "finalScore": 0.05628325232391924,
+        "finalScore": 0,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.21856798703272518,
           "aggregatedSimilarity": 0.2185679870327252,
           "novelty": 0.7814320129672748
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-033",
           "maxSimilarity": 0.05263157894736842,
           "novelty": 0.9473684210526316
         },
         "rawNovelty": 0.8063224741800783,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.6642172110221836,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.14210526315789473
+        },
         "relevance": {
           "similarity": 0.06980241048242113,
-          "gate": 0.06980241048242113
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-021",
             "semanticSimilarity": 0.23945623039969943,
-            "lexicalSimilarity": 0
+            "lexicalSimilarity": 0,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.1436737382398197
           },
           {
+            "rank": 2,
             "submissionId": "submission-020",
             "semanticSimilarity": 0.19109393091021154,
-            "lexicalSimilarity": 0.02631578947368421
+            "lexicalSimilarity": 0.02631578947368421,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.05732817927306347
           },
           {
+            "rank": 3,
             "submissionId": "submission-022",
             "semanticSimilarity": 0.17566069519842054,
-            "lexicalSimilarity": 0
+            "lexicalSimilarity": 0,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.01756606951984206
           }
         ]
       },
@@ -2155,7 +2735,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.25,
-          "actual": 0.05628325232391924,
+          "actual": 0,
           "passed": true
         },
         {
@@ -2192,36 +2772,56 @@
       },
       "rationale": "The statement concerns AI and privacy but does not engage directly with support summaries or this product's workflows.",
       "score": {
-        "finalScore": 0.16012853349119788,
+        "finalScore": 0.4435351258673841,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.6332741834715266,
           "aggregatedSimilarity": 0.6332741834715268,
           "novelty": 0.36672581652847325
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-005",
           "maxSimilarity": 0.12121212121212122,
           "novelty": 0.8787878787878788
         },
         "rawNovelty": 0.4435351258673841,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.31171694404920225,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.1318181818181818
+        },
         "relevance": {
           "similarity": 0.3610278513523547,
-          "gate": 0.3610278513523547
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 1
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-029",
             "semanticSimilarity": 0.6383748431859743,
-            "lexicalSimilarity": 0.08571428571428572
+            "lexicalSimilarity": 0.08571428571428572,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3830249059115846
           },
           {
+            "rank": 2,
             "submissionId": "submission-005",
             "semanticSimilarity": 0.6284520431227311,
-            "lexicalSimilarity": 0.12121212121212122
+            "lexicalSimilarity": 0.12121212121212122,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.18853561293681934
           },
           {
+            "rank": 3,
             "submissionId": "submission-006",
             "semanticSimilarity": 0.6171366462312275,
-            "lexicalSimilarity": 0.08571428571428572
+            "lexicalSimilarity": 0.08571428571428572,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.06171366462312276
           }
         ]
       },
@@ -2232,7 +2832,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.55,
-          "actual": 0.16012853349119788,
+          "actual": 0.4435351258673841,
           "passed": true
         },
         {
@@ -2269,36 +2869,56 @@
       },
       "rationale": "Generic AI literacy is adjacent to human review but is not specific to the announced support assistant.",
       "score": {
-        "finalScore": 0.25185039051372116,
+        "finalScore": 0.5242025758407683,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.5390004298067084,
           "aggregatedSimilarity": 0.5390004298067085,
           "novelty": 0.4609995701932915
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-009",
           "maxSimilarity": 0.11764705882352941,
           "novelty": 0.8823529411764706
         },
         "rawNovelty": 0.5242025758407683,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.3918496346642978,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.1323529411764706
+        },
         "relevance": {
           "similarity": 0.48044477864264284,
-          "gate": 0.48044477864264284
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 1
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-017",
             "semanticSimilarity": 0.5460280711096791,
-            "lexicalSimilarity": 0.1111111111111111
+            "lexicalSimilarity": 0.1111111111111111,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.3276168426658075
           },
           {
+            "rank": 2,
             "submissionId": "submission-029",
             "semanticSimilarity": 0.5369813825659907,
-            "lexicalSimilarity": 0.02631578947368421
+            "lexicalSimilarity": 0.02631578947368421,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.16109441476979725
           },
           {
+            "rank": 3,
             "submissionId": "submission-019",
             "semanticSimilarity": 0.5028917237110372,
-            "lexicalSimilarity": 0.05714285714285714
+            "lexicalSimilarity": 0.05714285714285714,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.05028917237110373
           }
         ]
       },
@@ -2309,7 +2929,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.55,
-          "actual": 0.25185039051372116,
+          "actual": 0.5242025758407683,
           "passed": true
         },
         {
@@ -2346,36 +2966,56 @@
       },
       "rationale": "AI sustainability relates to the technology in general but only weakly to the specific customer-support announcement.",
       "score": {
-        "finalScore": 0.17361377278160392,
+        "finalScore": 0.44615879722286444,
         "semantic": {
           "topK": 3,
+          "weightSum": 0.9999999999999999,
+          "weightedSimilaritySum": 0.426019303645017,
           "aggregatedSimilarity": 0.42601930364501706,
           "novelty": 0.5739806963549829
         },
         "lexical": {
+          "mostSimilarSubmissionId": "submission-031",
           "maxSimilarity": 0.11428571428571428,
           "novelty": 0.8857142857142857
         },
         "rawNovelty": 0.6207407347588783,
+        "rawNoveltyComponents": {
+          "semanticWeight": 0.85,
+          "semanticContribution": 0.48788359190173547,
+          "lexicalWeight": 0.15,
+          "lexicalContribution": 0.13285714285714284
+        },
         "relevance": {
           "similarity": 0.2796880614723034,
-          "gate": 0.2796880614723034
+          "low": 0.1,
+          "high": 0.35,
+          "gate": 0.7187522458892137
         },
         "nearestNeighbors": [
           {
+            "rank": 1,
             "submissionId": "submission-029",
             "semanticSimilarity": 0.4495865208389573,
-            "lexicalSimilarity": 0.025
+            "lexicalSimilarity": 0.025,
+            "semanticAggregationWeight": 0.6000000000000001,
+            "semanticSimilarityContribution": 0.26975191250337444
           },
           {
+            "rank": 2,
             "submissionId": "submission-017",
             "semanticSimilarity": 0.39189760250521305,
-            "lexicalSimilarity": 0.05
+            "lexicalSimilarity": 0.05,
+            "semanticAggregationWeight": 0.30000000000000004,
+            "semanticSimilarityContribution": 0.11756928075156392
           },
           {
+            "rank": 3,
             "submissionId": "submission-035",
             "semanticSimilarity": 0.38698110390078694,
-            "lexicalSimilarity": 0.024390243902439025
+            "lexicalSimilarity": 0.024390243902439025,
+            "semanticAggregationWeight": 0.10000000000000002,
+            "semanticSimilarityContribution": 0.038698110390078706
           }
         ]
       },
@@ -2386,7 +3026,7 @@
           "metric": "finalScore",
           "operator": "max",
           "expected": 0.55,
-          "actual": 0.17361377278160392,
+          "actual": 0.44615879722286444,
           "passed": true
         },
         {

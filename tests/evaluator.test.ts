@@ -44,16 +44,27 @@ const makeScore = ({
   finalScore,
   semantic: {
     topK: 3,
+    weightSum: 1,
+    weightedSimilaritySum: 1 - semanticNovelty,
     aggregatedSimilarity: 1 - semanticNovelty,
     novelty: semanticNovelty,
   },
   lexical: {
+    mostSimilarSubmissionId: "baseline-001",
     maxSimilarity: 1 - lexicalNovelty,
     novelty: lexicalNovelty,
   },
   rawNovelty,
+  rawNoveltyComponents: {
+    semanticWeight: 0.85,
+    semanticContribution: semanticNovelty * 0.85,
+    lexicalWeight: 0.15,
+    lexicalContribution: lexicalNovelty * 0.15,
+  },
   relevance: {
     similarity: relevance,
+    low: 0,
+    high: 1,
     gate: relevanceGate,
   },
   nearestNeighbors: [],

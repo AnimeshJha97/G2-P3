@@ -104,10 +104,14 @@ export class NoveltyScorer {
       aggregatedSemanticSimilarity,
     );
 
-    const maxLexicalSimilarity = Math.max(
-      ...comparisons.map(({ lexicalSimilarity }) => lexicalSimilarity),
+    const maxLexicalComparison = comparisons.reduce((best, comparison) =>
+      comparison.lexicalSimilarity > best.lexicalSimilarity ? comparison : best,
     );
+    const maxLexicalSimilarity = maxLexicalComparison.lexicalSimilarity;
     const lexicalNovelty = calculateLexicalNovelty(maxLexicalSimilarity);
+    const semanticContribution =
+      this.config.semanticWeight * semanticNovelty;
+    const lexicalContribution = this.config.lexicalWeight * lexicalNovelty;
     const rawNovelty = calculateRawNovelty(
       semanticNovelty,
       lexicalNovelty,
@@ -126,11 +130,30 @@ export class NoveltyScorer {
     );
     const finalScore = calculateFinalScore(rawNovelty, relevanceGate);
 
+    const activeSemanticWeights = this.config.semanticNeighborWeights.slice(
+      0,
+      topSemanticMatches.length,
+    );
+    const activeSemanticWeightSum = activeSemanticWeights.reduce(
+      (sum, weight) => sum + weight,
+      0,
+    );
+    const weightedSemanticSimilaritySum = topSemanticMatches.reduce(
+      (sum, { similarity }, index) =>
+        sum + similarity * activeSemanticWeights[index],
+      0,
+    );
     const nearestNeighbors: NeighborScore[] = topSemanticMatches.map(
-      ({ submissionId, similarity, lexicalSimilarity }) => ({
+      ({ submissionId, similarity, lexicalSimilarity }, index) => ({
+        rank: index + 1,
         submissionId,
         semanticSimilarity: similarity,
         lexicalSimilarity,
+        semanticAggregationWeight:
+          activeSemanticWeights[index] / activeSemanticWeightSum,
+        semanticSimilarityContribution:
+          (similarity * activeSemanticWeights[index]) /
+          activeSemanticWeightSum,
       }),
     );
 
@@ -138,16 +161,27 @@ export class NoveltyScorer {
       finalScore,
       semantic: {
         topK: topSemanticMatches.length,
+        weightSum: activeSemanticWeightSum,
+        weightedSimilaritySum: weightedSemanticSimilaritySum,
         aggregatedSimilarity: aggregatedSemanticSimilarity,
         novelty: semanticNovelty,
       },
       lexical: {
+        mostSimilarSubmissionId: maxLexicalComparison.submissionId,
         maxSimilarity: maxLexicalSimilarity,
         novelty: lexicalNovelty,
       },
       rawNovelty,
+      rawNoveltyComponents: {
+        semanticWeight: this.config.semanticWeight,
+        semanticContribution,
+        lexicalWeight: this.config.lexicalWeight,
+        lexicalContribution,
+      },
       relevance: {
         similarity: relevanceSimilarity,
+        low: this.config.relevanceLow,
+        high: this.config.relevanceHigh,
         gate: relevanceGate,
       },
       nearestNeighbors,

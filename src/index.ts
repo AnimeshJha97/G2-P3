@@ -2,6 +2,7 @@ export * from "./config/scoring-config.js";
 export * from "./embeddings/index.js";
 export * from "./evaluation/config.js";
 export * from "./evaluation/evaluator.js";
+export * from "./evaluation/markdown.js";
 export * from "./scoring/clamp.js";
 export * from "./scoring/final-score.js";
 export * from "./scoring/lexical-novelty.js";
