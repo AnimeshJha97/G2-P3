@@ -1,6 +1,7 @@
 node_modules/
 dist/
 coverage/
+.tmp/score-cli/
 
 .env
 .env.*
@@ -13,5 +14,4 @@ npm-debug.log*
 Thumbs.db
 .idea/
 .vscode/
-
-/docs
+internal-planning/
